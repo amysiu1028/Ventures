@@ -1,6 +1,21 @@
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
   display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.welcome {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -8,15 +23,16 @@ body {
 .loginBox {
   background-color: bisque;
   margin: 5%;
-  padding: 10%;
-  border-radius: 10%;
+  margin-top: 8%;
+  padding: 6%;
+  border-radius: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .loginContainer {
-  width: 100%;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +40,7 @@ body {
 
 .inputGroup {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 20%;
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -33,13 +49,18 @@ body {
 
 .inputField {
   width: 100%;
-  padding: 10px;
+  padding: 18px;
   box-sizing: border-box;
-  margin-top: 5px;
+  margin: 5px 30px;
 }
 
 .loginButton {
   padding: 10px 20px;
   border-radius: 10px;
   margin-top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
 }
+
+/* padding: top/bottom left/right */
+/* same with margin */
