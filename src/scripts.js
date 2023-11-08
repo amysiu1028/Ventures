@@ -21,12 +21,12 @@ const loginButton = document.querySelector('.loginButton')
 
 //addEventListeners:
 window.addEventListener('DOMContentLoaded', function () {
-    Promise.all(fetchAllPromises).then((values) => {
-        console.log("values[0].travelers",values[0].travelers)
-        allTravelerData = values[0].travelers;
+    // Promise.all(fetchAllPromises).then((values) => {
+    //     console.log("values[0].travelers",values[0].travelers)
+    //     allTravelerData = values[0].travelers;
 
-    //view it on the console... to see what data! have to console.log in apiCalls
-    })
+    // //view it on the console... to see what data! have to console.log in apiCalls
+    // })
     
     // console.log("global var travelerData:",travelerData)
 
