@@ -4,6 +4,8 @@ const errorMessage = document.querySelector('.errorMessage');
 
 //id:
 //<id> should be substituted for a number. For example, if you're trying to get traveler 50's info, you'd do http://localhost:3001/api/v1/travelers/50
+
+//all of them have ids
 export const urls = [
     "http://localhost:3001/api/v1/travelers", //get all travelers
     // "http://localhost:3001/api/v1/travelers/<id> where<id> will be a number of a traveler’s id", //CAN STRING INTERPOLATE get single traveler
@@ -20,7 +22,7 @@ export const fetchAllPromises = urls.map((url) => {
                 return response.json()
             })
             .then((data) => {
-                console.log("api:",data)
+                // console.log("api:",data)
                 return data;
             })
             .catch((error) => {
