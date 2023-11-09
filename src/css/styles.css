@@ -1,11 +1,22 @@
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-  justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
+  /* justify-content: ; */
+  width: 80vw;
 }
 
 h2 {
@@ -17,14 +28,17 @@ h2 {
 .welcome {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 .loginBox {
-  background-color: bisque;
+  background-color: rgba(255, 255, 255, 0.5);
   margin: 5%;
-  margin-top: 8%;
-  padding: 6%;
+  margin-top: 10%;
+  padding: 8%;
+  padding-left: 15%;
+  padding-right: 15%;
   border-radius: 8%;
   display: flex;
   flex-direction: column;
@@ -32,7 +46,7 @@ h2 {
 }
 
 .loginContainer {
-  width: 20vw;
+  width: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,12 +69,80 @@ h2 {
 }
 
 .loginButton {
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-radius: 10px;
   margin-top: 10px;
   font-family: 'Playfair Display', serif;
   font-size: 30px;
 }
 
+/* .dashboardP-pge {
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  height: 30vh;
+} */
+
+.dashboard {
+  display: flex;
+  border: 2px solid #ffffff;
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 70vw; /* Set the width of the dashboard */
+  height: 70vh; /* Set the height of the dashboard */
+  /* margin-top: 50px; Adjust the top margin as needed */
+  /* margin: 5%; */
+  /* margin: 20% 20%; */
+  /* padding: 8%; */
+  /* padding-left: 15%; */
+  /* padding-right: 15%; */
+  /* border-radius: 8%; */
+}
+
+.left-aside {
+  border: 2px solid #ffffff;
+  background-color: white;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-main {
+  border: 2px solid #ffffff;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* padding: 20%; */
+  /* padding-left: 0%; */
+  /* padding-left: 60%; */
+  /* width: 100%;
+  height: 100%; */
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.button {
+  padding: 10px;
+}
+/* .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+} */
+
+.hidden {
+  display: none;
+}
 /* padding: top/bottom left/right */
 /* same with margin */

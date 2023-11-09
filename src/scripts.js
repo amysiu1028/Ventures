@@ -10,29 +10,33 @@ import './images/turing-logo.png'
 //import functions?
 import { fetchAllPromises } from './apiCalls';
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// console.log('This is the JavaScript entry file - your code begins here.');
 
 //global variables:
 let allTravelerData;
-let singleTravelerData;
+let allTripsData;
+let allDestinataionData;
+// let singleTravelerData;
 
 //querySelectors:
 const loginButton = document.querySelector('.loginButton')
 
-//addEventListeners:
+//addEventListeners:'
 window.addEventListener('DOMContentLoaded', function () {
-    // Promise.all(fetchAllPromises).then((values) => {
-    //     console.log("values[0].travelers",values[0].travelers)
-    //     allTravelerData = values[0].travelers;
-
-    // //view it on the console... to see what data! have to console.log in apiCalls
-    // })
-    
-    // console.log("global var travelerData:",travelerData)
-
-    //
-
+    Promise.all(fetchAllPromises)
+        .then((values) => {
+            console.log("values",values)
+        //data from web API:
+            allTravelerData = values[0].travelers;
+            console.log("global var travelerData:",allTravelerData)
+            allTripsData = values[1].trips;
+            allDestinataionData = values[2].destinations;
+     })
+     .catch((error) => {
+        console.error("Error occurred:", error.message);
+     });
 })
+
 
 loginButton.addEventListener("click",function(event) {
     event.preventDefault() //button under form always have to event.preventDefault

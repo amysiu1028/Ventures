@@ -10,26 +10,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1 class="errorMessage hidden"></h1>
+  <h1 class="errorMessage hidden">Error message for server when down</h1>
   <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-  <section class="welcome"> 
-    <h1>Welcome to Venture Travel</h1>
-    <h2>Log in to start your journey</h2>
-  </section>
-  <section class="loginBox">
-    <h1>Login to Your Account</h1>
-    <form class="loginContainer"> 
-      <section class="inputGroup"> 
-        <label for="username">Username: </label>
-        <input type="text" class="inputField" name="username" placeholder="Enter username..." required>
+    <section class="login hidden"> 
+      <section class="welcome"> 
+        <h1>Welcome to Venture Travel</h1>
+        <h2>Log in to start your journey</h2>
       </section>
-      <section class="inputGroup">
-        <label for="password">Password: </label>
-        <input type="password" class="inputField" name="password" placeholder="Enter password..." required>
+      <section class="loginBox">
+        <h1>Login to Your Account</h1>
+        <form class="loginContainer"> 
+          <section class="inputGroup"> 
+            <label for="username">Username: </label>
+            <input type="text" id="username" class="inputField" name="username" placeholder="Enter username..." required>
+          </section>
+          <section class="inputGroup">
+            <label for="password">Password: </label>
+            <input type="password" id="password" class="inputField" name="password" placeholder="Enter password..." required>
+          </section>
+          <button type="submit" class="loginButton">Submit</button>
+        </form>
       </section>
-      <button type="submit" class="loginButton">Login</button>
-    </form>
-  </section>
+    </section>
+  <main> 
+    <section class="dashboard"> 
+      <aside class="left-aside">
+        <h1>Hello</h1>
+        <h1>Username</h1>
+        <button class="button addNewTrip">Add New Trip</button>
+      </aside>
+      <main class="dashboard-main">
+        <header class="dashboard-header">
+          <h1 id="travelAgency">Welcome to Venture Travel Agency</h1>
+          <h2 id="yourVacation">Your vacation starts here</h2>
+        </header>
+        <section class="buttons">
+          <button class="button past" tabindex="0">Past</button>
+          <button class="button upcoming" tabindex="0">Upcoming</button>
+          <button class="button pending" tabindex="0">Pending</button>
+          <button class="button total-cost" tabindex="0">Total Cost</button>
+        </section>
+      </main>
+    </section>
+  </main>
   <!-- <p> Please <a href="session/new">log in</a> to access your account.</p> -->
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
