@@ -1,3 +1,5 @@
+//
+
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -8,22 +10,30 @@ import './css/styles.css';
 import './images/turing-logo.png'
 
 //import functions?
-import { fetchAllPromises } from './apiCalls';
-import { handleLogin, getUserID } from "./data-model";
+import { fetchAllPromises, fetchSingleTravelerPromise } from './apiCalls';
+import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips } from "./data-model";
+import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips } from './domUpdates';
+
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 //global variables:
-let allTravelerData;
-let allTripsData;
+export let allTravelerData;
+export let allTripsData;
 let allDestinataionData;
 let userID;
+// console.log("userID", userID)
+// let pastTrips;
+
+//fetch()
+// export const singleTravelerUrl = 
+
 // let singleTravelerData;
 
 //querySelectors:
 const submitButton = document.querySelector('.submitButton');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
-
+const loginErrorMessage = document.querySelector(".login-error-message");
 
 //addEventListeners:'
 window.addEventListener('DOMContentLoaded', function () {
@@ -32,27 +42,58 @@ window.addEventListener('DOMContentLoaded', function () {
             console.log("values",values)
         //data from web API:
             allTravelerData = values[0].travelers;
-            // console.log("global var travelerData:",allTravelerData)
             allTripsData = values[1].trips;
-            //singleTravelerData = values[2].message;
-            //allDestinataionData = values[3].destinations;
             allDestinataionData = values[2].destinations;
      })
      .catch((error) => {
         console.error("Error occurred:", error.message);
      });
 
+     
   
 })
 
-// usernameInput.addEventListener("input", function() {
-//     userID = getUserID(usernameInput);
-//     console.log("undefined input",usernameInput)
-//     console.log("User ID:", userID);
-//  });
- 
-
 submitButton.addEventListener("click",function(event) {
     event.preventDefault() 
-    getUserID(usernameInput)
+    userID = getUserID(usernameInput.value);
+    const loginResult = handleLogin(usernameInput.value, passwordInput.value, userID);
+    if (loginResult === true) {
+        new Promise((resolve,reject) => {
+            fetchSingleTravelerPromise(`http://localhost:3001/api/v1/travelers/${userID}`)
+            .then((singleTravelerValues) => {
+                const todaysDate = getTodaysDate();
+                //use todaysDate as a parameter
+                loadDashboard();
+                const tripsByID = displaySpecificTravelerTrips(allTripsData,userID);
+
+                //show past trips:
+                travelerPastTrips(tripsByID,todaysDate);
+                displayPastTrips();
+
+                //show upcoming trips:
+                travelerUpcomingTrips(tripsByID,todaysDate);
+                displayUpcomingTrips();
+
+                //show pending trips:
+                travelerPendingTrips(tripsByID);
+                displayPendingTrips();
+                //will post new upcoming trips
+                resolve(singleTravelerValues);
+            })
+            .catch((error) => {
+                reject(error)
+            })
+        })
+    } else if (typeof loginResult === 'string') {
+        displayLoginErrorMessage(loginResult)
+    }
 });
+
+
+//separate function invoking somewhere else:
+//when user logins, create a Date.now
+//as it brings up data
+//user has the user.date and compare it to Date.now
+
+//date formatter
+//"2019/11/16"

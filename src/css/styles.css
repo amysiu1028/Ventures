@@ -132,14 +132,31 @@ h2 {
   align-items: center;
 }
 
-.button {
-  padding: 10px;
+.trips-container {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-between;
+  width: 90%;
+  height: 70%;
 }
 /* .buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 } */
+
+.trips {
+  padding: 3%;
+  width: 20vw;
+  text-align: center;
+  background: white;
+  margin: 1%;
+  border-radius: 3%;
+  max-height: 90vh;
+/* * Add overflow-y for vertical scrolling */
+  overflow-y: auto;
+}
 
 .hidden {
   display: none;
