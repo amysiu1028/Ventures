@@ -117,6 +117,7 @@ h2 {
 .dashboard-main {
   border: 2px solid #ffffff;
   width: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -139,7 +140,7 @@ h2 {
 
 .dashboard-header h1 {
   font-size: 30px; 
-  margin: 2% 0%;
+  margin: 4% 0%;
 }
 
 .dashboard-header h2 {
@@ -195,6 +196,9 @@ h2 {
   border-radius: 3%;
 }
 
+.total-cost-statement {
+  font-size: 12px;
+}
 
 .hidden {
   display: none;
