@@ -10,7 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1 class="errorMessage">Error message for server when down</h1>
+  <!-- this error message may not be needed -->
+  <h1 class="errorMessage hidden">Error message for server when down</h1>
   <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
     <section class="login hidden"> 
       <section class="welcome"> 
@@ -34,7 +35,7 @@
       </section>
     </section>
   <main> 
-    <section class="dashboard hidden"> 
+    <section class="dashboard"> 
       <aside class="left-aside">
         <h1>Hello</h1>
         <h1>Username</h1>
@@ -44,18 +45,40 @@
         <header class="dashboard-header">
           <h1 id="travelAgency">Welcome to Venture Travel Agency</h1>
           <h2 id="yourVacation">Your vacation starts here</h2>
+          <section class="dropdown-container"> 
+            <label for="year-dropdown">Select Year:</label>
+            <select class="year-dropdown" id="year-dropdown" tabindex="0">
+              <option disabled selected>Select Year</option>
+              <option value="2019" title="January 2019 - December 2019">01/2019 - 12/2019</option>
+              <option value="2020" title="January 2020 - December 2020">01/2020 - 12/2020</option>
+              <option value="2021" title="January 2021 - December 2021">01/2021 - 12/2021</option>
+              <option value="2022" title="January 2022 - December 2022">01/2022 - 12/2022</option>
+              <option value="2023" title="January 2023 - December 2023">01/2023 - 12/2023</option>
+              <!-- Add more years as needed -->
+            </select>
+            <label id="selected-year-title" aria-live="polite" aria-atomic="true">Total Cost for Selected Year:</label>
+          </section>
         </header>
         <section class="trips-container">
-          <section class="trips past-trips">
+          <section class="trips">
             <h1>Past Trips</h1>
+            <section class="past-trips">
+
+            </section>
             <!-- this is where I'll add Past Trips -->
           </section>
-          <section class="trips upcoming-trips">
+          <section class="trips">
             <h1>Upcoming Trips</h1>
+            <section class="upcoming-trips"> 
+
+            </section>
             <!-- this is where I'll add Upcoming Trips -->
           </section>
-          <section class="trips pending-trips">
+          <section class="trips">
             <h1>Pending Trips</h1>
+            <section class="pending-trips"> 
+              
+            </section>
             <!-- this is where I'll add Upcoming Trips -->
           </section>
           <!-- <button class="button past" tabindex="0">Past</button>
@@ -63,7 +86,7 @@
           <button class="button pending" tabindex="0">Pending</button> -->
         </section>
         <!-- could do a toggle for total price if certain things are selected. -->
-        <button class="button total-cost" tabindex="0">Total Cost</button>
+        <!-- <button class="button total-cost" tabindex="0">Total Cost</button> -->
       </main>
     </section>
   </main>

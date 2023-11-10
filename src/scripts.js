@@ -11,7 +11,7 @@ import './images/turing-logo.png'
 
 //import functions?
 import { fetchAllPromises, fetchSingleTravelerPromise } from './apiCalls';
-import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips } from "./data-model";
+import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear } from "./data-model";
 import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips } from './domUpdates';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
@@ -21,25 +21,21 @@ export let allTravelerData;
 export let allTripsData;
 let allDestinataionData;
 let userID;
-// console.log("userID", userID)
-// let pastTrips;
-
-//fetch()
-// export const singleTravelerUrl = 
-
-// let singleTravelerData;
+export let pastTrips;
+export let upcomingTrips;
+export let pendingTrips;
 
 //querySelectors:
 const submitButton = document.querySelector('.submitButton');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginErrorMessage = document.querySelector(".login-error-message");
-
+const serverDownErrorMessage  = document.querySelector('.errorMessage') //change wheere it's used! And not sure if I want this html!
+const yearDropdown = document.querySelector('.year-dropdown')
 //addEventListeners:'
 window.addEventListener('DOMContentLoaded', function () {
     Promise.all(fetchAllPromises)
         .then((values) => {
-            console.log("values",values)
         //data from web API:
             allTravelerData = values[0].travelers;
             allTripsData = values[1].trips;
@@ -48,9 +44,6 @@ window.addEventListener('DOMContentLoaded', function () {
      .catch((error) => {
         console.error("Error occurred:", error.message);
      });
-
-     
-  
 })
 
 submitButton.addEventListener("click",function(event) {
@@ -61,22 +54,37 @@ submitButton.addEventListener("click",function(event) {
         new Promise((resolve,reject) => {
             fetchSingleTravelerPromise(`http://localhost:3001/api/v1/travelers/${userID}`)
             .then((singleTravelerValues) => {
-                const todaysDate = getTodaysDate();
+                //change userName... with displayUserName function
+                serverDownErrorMessage.classList.add('hidden');
+                
+                // const todaysDate = getTodaysDate();
                 //use todaysDate as a parameter
-                loadDashboard();
                 const tripsByID = displaySpecificTravelerTrips(allTripsData,userID);
+                const todaysDate = getTodaysDate();
 
-                //show past trips:
-                travelerPastTrips(tripsByID,todaysDate);
+                //get past trip data:
+                pastTrips = travelerPastTrips(tripsByID,todaysDate);
+                
+                //get upcoming trip data:
+                upcomingTrips = travelerUpcomingTrips(tripsByID,todaysDate);
+                
+                //get pending data:
+                pendingTrips = travelerPendingTrips(tripsByID);
+                
+                loadDashboard();
+
                 displayPastTrips();
-
-                //show upcoming trips:
-                travelerUpcomingTrips(tripsByID,todaysDate);
                 displayUpcomingTrips();
-
-                //show pending trips:
-                travelerPendingTrips(tripsByID);
                 displayPendingTrips();
+
+                //Add event listener for year selection:
+                yearDropdown.addEventListener('change', function () {
+                    const selectedYear = yearDropdown.value;
+                    filterTripByYear(tripsByID, selectedYear);
+                    // displayCostForYear(selectedYear);
+                });
+                //get total cost:
+                // calculateTotalCost(tripsByID, allDestinataionData, userID)
                 //will post new upcoming trips
                 resolve(singleTravelerValues);
             })
@@ -88,12 +96,3 @@ submitButton.addEventListener("click",function(event) {
         displayLoginErrorMessage(loginResult)
     }
 });
-
-
-//separate function invoking somewhere else:
-//when user logins, create a Date.now
-//as it brings up data
-//user has the user.date and compare it to Date.now
-
-//date formatter
-//"2019/11/16"

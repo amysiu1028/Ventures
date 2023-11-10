@@ -31,7 +31,6 @@ export const handleLogin = (username, password, id) => {
 export const getTodaysDate = () => {
    //new Date() is a constructor that creates a new Date object representing the current date and time.
    const currentDate = new Date(); //Thu Nov 09 2023
-   console.log("currentDate",currentDate)
    //method to get the year from string
    const year = currentDate.getFullYear();
    //method to get the month
@@ -45,81 +44,56 @@ export const getTodaysDate = () => {
 //how are we using the getsingleTraveler
 // export function getSingleTraveler(allTripsData,userID)
 //tripsData have to create a sample
-export const displaySpecificTravelerTrips = (trips, ID) => {
+export const displaySpecificTravelerTrips = (trips, id) => {
    //search parseInt more
-   ID = parseInt(ID)
-   const filterTripByID = trips.filter((traveler) => traveler.userID === ID)
-   console.log("filteredTrips",filterTripByID)
+   // ID = parseInt(ID)
+   const filterTripByID = trips.filter((traveler) => traveler.userID === parseInt(id))
    return filterTripByID
 };
 
-export const travelerPastTrips = (filteredTrip, date) => {
-   const pastTrips = filteredTrip.filter((trip) => {
+export const travelerPastTrips = (filteredTrips, date) => {
+   const pastTrips = filteredTrips.filter((trip) => {
       // console.log("new Date(trip.date)",new Date(trip.date))
       // console.log("new Date(date)",new Date(date))
       return new Date(trip.date) < new Date(date)
    })
-   console.log("pastTrips", pastTrips)
    return pastTrips
 }
 
 //QUESTION
 //data set only has past trips, doesn't have upcoming trips 
 //unless we add it as that...??
-export const travelerUpcomingTrips = (filteredTrip, date) => {
-   const upcomingTrips = filteredTrip.filter((trip) => {
-      // console.log("new Date(trip.date)",new Date(trip.date))
-      // console.log("new Date(date)",new Date(date))
+export const travelerUpcomingTrips = (filteredTrips, date) => {
+   const upcomingTrips = filteredTrips.filter((trip) => {
       return new Date(trip.date) > new Date(date)
    })
-   console.log("upcomingTrips", upcomingTrips)
    return upcomingTrips
 }
 
-export const travelerPendingTrips = (filteredTrip) => {
-   const pendingTrips = filteredTrip.filter((trip) => trip.status = 'pending')
-   console.log("pendingTrips",pendingTrips)
+export const travelerPendingTrips = (filteredTrips) => {
+   const pendingTrips = filteredTrips.filter((trip) => trip.status = 'pending')
    return pendingTrips
 }
 
+export const filterTripByYear = (filteredTrips,year) => {
+   console.log("filteredTrips",filteredTrips)
+   const filterByChosenYear = filteredTrips.filter((trip) => { 
+      const getYear = new Date(trip.date).getFullYear
+      console.log("getYear", getYear)
+      return getYear.toString() === year
+   })
+   console.log("filterByChosenYear")
+   return filterByChosenYear
+}
 
-//'Thu Nov 09 2023' split 
-   //create an array of strings that correspond to each of the months
-   //index + 1 
-   //[ Jan, Feb, Mar, Apr, May, Jun, July ]
-   // { Jan: 1, Feb: 2, }   
-//filter by date -= > past and another for upcoming trips
+// export const getTripsByYear = (filteredTrip) => {
+//    const filteredTrip = filteredTrip.filter((trip) => )
+// }
+// export const calculateTotalCost = (filteredTrips, destinationData, id, year) => {
+//    console.log("filteredTrips",filteredTrips)
+//    console.log("destinationData",destinationData)
+//    console.log("id",id)
 
+// }
 
-//testing:
-//1. test when successful user login
-//2. test if there is a bad login, if there is no number, a40b
-//3. test if there is 
-
-
-// getUserID()
-// `/(\d+)/` - used to mark the start of new pattern, in this case a: \d - digit character class, where `+` matches the preceding occurrences. `(  )` captures the group.
-
-
-//.filter(Boolean): After splitting the string using the regular expression, the filter() method is used with the argument Boolean. In JavaScript, the filter() method creates a new array with all elements that pass the test implemented by the provided function. When Boolean is used as the argument, it acts as a truthy value filter, removing any falsy values from the array.
-
-// In this context, the filter(Boolean) expression removes any empty strings from the array. In the example array ["traveler", "50", ""], the empty string "" is falsy, so it is removed, resulting in the final array ["traveler", "50"].
-
-// var inputString = "traveler50";
-// var parts = inputString.split(/(\d+)/).filter(Boolean); // Split using regex to capture numbers
-// console.log(parts)
-
-
-//handleLogin(userName,passWord, userID)
-// if userNam, and password === "" -> NOt complete
-//if userName === `traveler${userID}` && password === travel
-   //showDashboard() - that will hide the login and show dashboard
-   /// oR just login.classList.add(hidden)
-//THIS IS Placed under when addEventListender button submit is clicked
-
-//getUserID(loginUserName) 
-//go into traveler.id -> for Each (element ) if username.value.includes(element) 
-//then return userID????
-
-//user ID - can use in the single traveler fetch 
-
+// export const calculateCostWithFee = (pastTrips)

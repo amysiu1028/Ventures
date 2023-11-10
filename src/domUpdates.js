@@ -1,5 +1,8 @@
 // import { handleLogin, getUserID } from "./data-model";
-import { travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips } from "./data-model";
+import { travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, displaySpecificTravelerTrips, getTodaysDate } from "./data-model";
+import { allTripsData, userID, pendingTrips, pastTrips, upcomingTrips } from "./scripts";
+// console.log("DOM userID", userID)
+
 //querySelectors:
 const loginPage = document.querySelector('.login');
 const dashboardPage = document.querySelector('.dashboard');
@@ -23,16 +26,50 @@ export function loadDashboard() {
 }
 
 export function displayPastTrips() {
-  let pastTrips = travelerPastTrips(tripsByID,todaysDate)
-  pastTripsBox.innerHTML = `<p>${pastTrips}</p>`
+  // const todaysDate = getTodaysDate();
+  // const tripsByID = displaySpecificTravelerTrips(allTripsData,userID);
+  // let pastTrips = travelerPastTrips(tripsByID,todaysDate)
+  // console.log("pastTrips DOM",pastTrips)
+  pastTripsBox.innerHTML = pastTrips.map((trip) => `
+  <section class="trip-box">
+    <h3>Destination: ${trip.destinationID}</h3>
+    <h3>Date: ${trip.date}</h3>
+    <h3>Number of Travelers: ${trip.travelers}</h3>
+    <h3>Cost: have to calculate </h3>
+    <h3>Trip ID: ${trip.id}</h3>
+  </section>
+`).join('');
 }
 
 export function displayUpcomingTrips() {
-  const upcomingTrips = travelerUpcomingTrips(tripsByID,todaysDate)
-  pastTripsBox.innerHTML = `<p>${upcomingTrips}</p>`
+  // const todaysDate = getTodaysDate();
+  // const tripsByID = displaySpecificTravelerTrips(allTripsData,userID);
+  // const upcomingTrips = travelerUpcomingTrips(tripsByID,todaysDate)
+  console.log("upcoming trips DOM", upcomingTrips)
+  // upcomingTripsBox.innerHTML += `<p>${upcomingTrips}</p>`
+  upcomingTripsBox.innerHTML = upcomingTrips.map((trip) => `
+  <section class="trip-box">
+    <h3>Destination: ${trip.destinationID}</h3>
+    <h3>Date: ${trip.date}</h3>
+    <h3>Number of Travelers: ${trip.travelers}</h3>
+    <h3>Cost: have to calculate </h3>
+    <h3>Trip ID: ${trip.id}</h3>
+  </section>
+`).join('');
 }
 
 export function displayPendingTrips() {
-  const pendingTrips = travelerPendingTrips(tripsByID)
-  pastTripsBox.innerHTML = `<p>${pendingTrips}</p>`
+  // const tripsByID = displaySpecificTravelerTrips(allTripsData,userID);
+  // const pendingTrips = travelerPendingTrips(tripsByID)
+  console.log("pending trips DOM", pendingTrips)
+  // pendingTripsBox.innerHTML += `<p>${pendingTrips}</p>`
+  pendingTripsBox.innerHTML = pendingTrips.map((trip) => `
+  <section class="trip-box">
+    <h3>Destination: ${trip.destinationID}</h3>
+    <h3>Date: ${trip.date}</h3>
+    <h3>Number of Travelers: ${trip.travelers}</h3>
+    <h3>Cost: have to calculate </h3>
+    <h3>Trip ID: ${trip.id}</h3>
+  </section>
+`).join('');
 }
