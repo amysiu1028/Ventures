@@ -74,12 +74,12 @@ export function displayPendingTrips() {
 `).join('');
 }
 
-export function displayCostPerYear(year,id) {
+export function displayCostPerYear(year,id, cost, costWithFee) {
   const filteredByYear = filterTripByYear(id, year);
   // console.log("filterTripByYear",filteredByYear)
   if (filteredByYear.length > 0) {
     totalCostStatement.classList.remove('hidden');
-    totalCostStatement.innerText = `Your total cost is: $ (caculatedtotalcost)`
+    totalCostStatement.innerText = `Your total cost this past year (without the 10% travel agency fee): $${cost}\nYour total cost this past year (with the 10% travel agency fee): $${costWithFee}`
   } else {
     totalCostStatement.classList.remove('hidden');
     totalCostStatement.innerText = `You did not book any trips in this ${year}`

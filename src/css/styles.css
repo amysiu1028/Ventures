@@ -159,7 +159,8 @@ h2 {
   /* align-items: center; */
   justify-content: space-between;
   width: 90%;
-  height: 70%;
+  height: 60%;
+  margin-top: 50px;
 }
 /* .buttons {
   display: flex;

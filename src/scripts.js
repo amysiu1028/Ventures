@@ -11,7 +11,7 @@ import './images/turing-logo.png'
 
 //import functions?
 import { fetchAllPromises, fetchSingleTravelerPromise } from './apiCalls';
-import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear } from "./data-model";
+import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee } from "./data-model";
 import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear } from './domUpdates';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
@@ -83,9 +83,9 @@ submitButton.addEventListener("click",function(event) {
                     // console.log("selectedYear", selectedYear)
                     const filterTripsByChosenYear = filterTripByYear(tripsByID, selectedYear);
                     console.log("filterTripsByChosenYear",filterTripsByChosenYear);
-                    getTotalCostPerYear(filterTripsByChosenYear,allDestinataionData);
-
-                    displayCostPerYear(selectedYear,tripsByID);
+                    const totalCost = getTotalCostPerYear(filterTripsByChosenYear,allDestinataionData);
+                    const addFeeCost = costWithFee(totalCost);
+                    displayCostPerYear(selectedYear,tripsByID,totalCost, addFeeCost);
                     //optional:displayTrips for that year in table and also cost per each?
                     //
                     // displayCostForYear(selectedYear);

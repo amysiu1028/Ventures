@@ -127,6 +127,12 @@ export const getTotalCostPerYear = (filterTripsByChosenYear,destinationData) => 
    // return costObject
 }
 
+export const costWithFee = (cost) => {
+   const costWithTenPercentFee = cost + (cost * 0.1)
+   return costWithTenPercentFee
+}
+
+
 // export const calculateTotalCost = (costObject) => {
 //    const totalCostForEveryone = Object.keys(costObject).reduce((cost,values) => {
 //       costObject[values].flightCostPerPerson.
