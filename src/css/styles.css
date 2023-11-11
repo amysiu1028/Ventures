@@ -76,27 +76,11 @@ h2 {
   font-size: 30px;
 }
 
-/* .dashboardP-pge {
-  display: flex;
-  flex-direction: row;
-  width: 60vw;
-  height: 30vh;
-} */
-
 .dashboard {
   display: flex;
   border: 2px solid #ffffff;
-  /* justify-content: center; */
-  /* align-items: center; */
-  width: 70vw; /* Set the width of the dashboard */
-  height: 70vh; /* Set the height of the dashboard */
-  /* margin-top: 50px; Adjust the top margin as needed */
-  /* margin: 5%; */
-  /* margin: 20% 20%; */
-  /* padding: 8%; */
-  /* padding-left: 15%; */
-  /* padding-right: 15%; */
-  /* border-radius: 8%; */
+  width: 90vw; /* Set the width of the dashboard */
+  height: 80vh; /* Set the height of the dashboard */
 }
 
 .dashboard-main {
@@ -106,17 +90,18 @@ h2 {
 .left-aside {
   border: 2px solid #ffffff;
   background-color: white;
-  width: 20%;
+  width: 23%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .dashboard-main {
   border: 2px solid #ffffff;
-  width: 80%;
+  width: 77%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -138,17 +123,18 @@ h2 {
   height: 30%;
 }
 
-.dashboard-header h1 {
+h1 {
   font-size: 30px; 
   margin: 4% 0%;
 }
 
-.dashboard-header h2 {
+h2 {
   font-size: 18px;
   margin: 2% 0%;
 }
 
-.dropdown-container {
+.dropdown-container, 
+.aside-input-label {
   font-size: 15px;
   margin: 2% 0%;
 }
@@ -156,17 +142,11 @@ h2 {
 .trips-container {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   justify-content: space-between;
   width: 90%;
   height: 60%;
   margin-top: 50px;
 }
-/* .buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-} */
 
 .trips {
   padding: 3%;
@@ -176,7 +156,6 @@ h2 {
   margin: 1%;
   border-radius: 3%;
   max-height: 90vh;
-/* * Add overflow-y for vertical scrolling */
   overflow-y: auto;
 }
 
@@ -201,8 +180,24 @@ h2 {
   font-size: 12px;
 }
 
+.select-year-title {
+  margin-bottom: 10%;
+}
+
+.total-cost-statement {
+  text-align: left;
+}
+
+.add-new-trip {
+  display: flex;
+  flex-direction: row;
+
+}
+/* 
+.add-trio-button {
+  margin-left: 2%;
+} */
+
 .hidden {
   display: none;
 }
-/* padding: top/bottom left/right */
-/* same with margin */

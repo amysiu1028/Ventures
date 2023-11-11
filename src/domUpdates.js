@@ -10,7 +10,8 @@ const loginErrorMessage = document.querySelector(".login-error-message");
 const pastTripsBox = document.querySelector('.past-trips');
 const upcomingTripsBox = document.querySelector('.upcoming-trips');
 const pendingTripsBox = document.querySelector('.pending-trips');
-const totalCostStatement = document.querySelector('.total-cost-statement')
+const totalCostStatement = document.querySelector('.total-cost-statement');
+const helloUsername = document.querySelector('.hello-username');
 // const loginErrorMessage = document.querySelector(".login-error-message");
 
 //show login message errors
@@ -23,6 +24,10 @@ export function displayLoginErrorMessage(message) {
 export function loadDashboard() {
     loginPage.classList.add('hidden')
     dashboardPage.classList.remove('hidden')
+}
+
+export const displayUserName = (singleTravelData) => {
+  helloUsername.innerText = `Hello ${singleTravelData.name}`
 }
 
 export function displayPastTrips() {
@@ -75,13 +80,19 @@ export function displayPendingTrips() {
 }
 
 export function displayCostPerYear(year,id, cost, costWithFee) {
+  // const year = yearDropdown.value;
   const filteredByYear = filterTripByYear(id, year);
   // console.log("filterTripByYear",filteredByYear)
   if (filteredByYear.length > 0) {
     totalCostStatement.classList.remove('hidden');
-    totalCostStatement.innerText = `Your total cost this past year (without the 10% travel agency fee): $${cost}\nYour total cost this past year (with the 10% travel agency fee): $${costWithFee}`
+    totalCostStatement.innerHTML = `<h3><strong>${year} Total Cost </strong>: $${costWithFee}</h3>
+    `
+    // <h3><strong>${year} Total cost</strong> (without travel agency fee): $${cost}</h3><br>
   } else {
     totalCostStatement.classList.remove('hidden');
     totalCostStatement.innerText = `You did not book any trips in this ${year}`
+  }
 }
-}
+
+//On the calculate total price:
+//extension could be adding a table or list of trip 1: destination: cost: info with scroll

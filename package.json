@@ -28,5 +28,9 @@
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+  },
+  "dependencies": {
+    "flatpickr": "^4.6.13",
+    "js-datepicker": "^5.18.2"
   }
 }

@@ -12,7 +12,8 @@ import './images/turing-logo.png'
 //import functions?
 import { fetchAllPromises, fetchSingleTravelerPromise } from './apiCalls';
 import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee } from "./data-model";
-import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear } from './domUpdates';
+import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName } from './domUpdates';
+import flatpickr from 'flatpickr';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -31,7 +32,9 @@ const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginErrorMessage = document.querySelector(".login-error-message");
 const serverDownErrorMessage  = document.querySelector('.errorMessage') //change wheere it's used! And not sure if I want this html!
-const yearDropdown = document.querySelector('.year-dropdown')
+const yearDropdown = document.querySelector('.year-dropdown');
+const dateInput = document.querySelector('.date');
+
 //addEventListeners:'
 window.addEventListener('DOMContentLoaded', function () {
     Promise.all(fetchAllPromises)
@@ -40,6 +43,11 @@ window.addEventListener('DOMContentLoaded', function () {
             allTravelerData = values[0].travelers;
             allTripsData = values[1].trips;
             allDestinataionData = values[2].destinations;
+            flatpickr(dateInput, {
+                altInput: true,
+                altFormat: "F j, Y",
+                dateFormat: "Y-m-d",
+            })
      })
      .catch((error) => {
         console.error("Error occurred:", error.message);
@@ -53,7 +61,7 @@ submitButton.addEventListener("click",function(event) {
     if (loginResult === true) {
         new Promise((resolve,reject) => {
             fetchSingleTravelerPromise(`http://localhost:3001/api/v1/travelers/${userID}`)
-            .then((singleTravelerValues) => {
+            .then((singleTravelerValue) => {
                 //change userName... with displayUserName function
                 serverDownErrorMessage.classList.add('hidden');
                 
@@ -71,6 +79,9 @@ submitButton.addEventListener("click",function(event) {
                 //get pending data:
                 pendingTrips = travelerPendingTrips(tripsByID);
                 
+                //show single traveler information:
+                displayUserName(singleTravelerValue);
+
                 loadDashboard();
 
                 displayPastTrips();
@@ -87,13 +98,11 @@ submitButton.addEventListener("click",function(event) {
                     const addFeeCost = costWithFee(totalCost);
                     displayCostPerYear(selectedYear,tripsByID,totalCost, addFeeCost);
                     //optional:displayTrips for that year in table and also cost per each?
-                    //
-                    // displayCostForYear(selectedYear);
                 });
-                //get total cost:
-                // calculateTotalCost(tripsByID, allDestinataionData, userID)
-                //will post new upcoming trips
-                resolve(singleTravelerValues);
+
+                // const picker = datepicker(selector, options)
+
+                resolve(singleTravelerValue);
             })
             .catch((error) => {
                 reject(error)

@@ -1,3 +1,4 @@
+<!-- CHECK CLASS NAMES have to be kebab-case! not camelCase -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,30 +36,70 @@
       </section>
     </section>
   <main> 
-    <section class="dashboard"> 
+    <section class="dashboard hidden"> 
       <aside class="left-aside">
-        <h1>Hello</h1>
-        <h1>Username</h1>
-        <button class="button addNewTrip">Add New Trip</button>
+        <!-- <h1>Hello</h1> -->
+        <h1 class="hello-username" >Hello Username</h1>
+        <section class="dropdown-container"> 
+          <label class="select-year-title" aria-live="polite" aria-atomic="true">Total Cost for Selected Year:</label><br>
+          <label for="year-dropdown">Select Year:</label>
+          <select class="year-dropdown" id="year-dropdown" tabindex="0">
+            <option disabled selected>Select Year</option>
+            <option value="2019" title="January 2019 - December 2019">01/2019 - 12/2019</option>
+            <option value="2020" title="January 2020 - December 2020">01/2020 - 12/2020</option>
+            <option value="2021" title="January 2021 - December 2021">01/2021 - 12/2021</option>
+            <option value="2022" title="January 2022 - December 2022">01/2022 - 12/2022</option>
+            <option value="2023" title="January 2023 - December 2023">01/2023 - 12/2023</option>
+            <!-- Add more years as needed -->
+          </select>
+        </section>
+        <h3 class="total-cost-statement hidden">You did not book any trips in this year</h3>
+        <!-- <h1 class="hello-username" >Hello Username</h1> -->
+        <!-- <form> -->
+          <!-- <label class="aside-input-label"for="date">Choose a Date:</label> -->
+          <!-- <input type="date" id="date" class="date-inputField" placeholder="Enter or Choose Date in YYYY/MM/DD form..."> -->
+          <!-- <label class="aside-input-label" for="traverNumbers">Number of Travelers</label> -->
+          <!-- <input type="traverNumbers" id="traverNumbers" class="travel-number-inputField" placeholder="Enter number of travelers"> -->
+        <!-- </form> -->
+        <!-- <button class="button addNewTrip">Add New Trip</button> -->
       </aside>
       <main class="dashboard-main">
         <header class="dashboard-header">
-          <h1 id="travelAgency">Welcome to Venture Travel Agency</h1>
-          <h2 id="yourVacation">Your vacation starts here</h2>
-          <section class="dropdown-container"> 
-            <label id="selected-year-title" aria-live="polite" aria-atomic="true">Total Cost for Selected Year:</label><br>
-            <label for="year-dropdown">Select Year:</label>
-            <select class="year-dropdown" id="year-dropdown" tabindex="0">
-              <option disabled selected>Select Year</option>
-              <option value="2019" title="January 2019 - December 2019">01/2019 - 12/2019</option>
-              <option value="2020" title="January 2020 - December 2020">01/2020 - 12/2020</option>
-              <option value="2021" title="January 2021 - December 2021">01/2021 - 12/2021</option>
-              <option value="2022" title="January 2022 - December 2022">01/2022 - 12/2022</option>
-              <option value="2023" title="January 2023 - December 2023">01/2023 - 12/2023</option>
-              <!-- Add more years as needed -->
-            </select>
+          <h1>Welcome to Venture Travel Agency</h1>
+          <h2>Your vacation starts here</h2>
+          <section class="add-new-trip"> 
+            <form>
+              <label for="start-date">Choose Start Date:</label> 
+              <input type="start-date" id="start-date" class="start-date-inputField" placeholder="Enter Start Date in YYYY/MM/DD form...">
+              <label for="date">Choose End Date:</label> 
+              <input type="end-date" id="end-date" class="end-date-inputField" placeholder="Enter End Date in YYYY/MM/DD form...">
+              <!-- NEED TO SEE IF I CAN GET DURATION FROM START AND END DATE! -->
+              <!-- CALCULATE end date from above: an get the duration fron between the dates? Can date picker choose two dates how to get duration between those two dates? -->
+              <label class="aside-input-label" for="traverNumbers">Number of Travelers:</label>
+              <select class="destination-dropdown" tabindex="0">
+                <option disabled selected>Select Destination</option>
+                <!-- JavaScript will generate options here -->
+                <!-- WILL GO THROUGH OBJECT AND GET DESTINATIONS -->
+              </select>
+              <input type="traverNumbers" id="traverNumbers" class="travel-number-inputField" placeholder="Enter number of travelers">
+              <button class="add-trio-button">Add New Trip</button>
+            </form>
           </section>
-          <h3 class="total-cost-statement hidden">You did not book any trips in this year</h3>
+          <!-- <h2 id="yourVacation">Your vacation starts here</h2> -->
+          <!-- <section class="dropdown-container">  -->
+            <!-- <label id="selected-year-title" aria-live="polite" aria-atomic="true">Total Cost for Selected Year:</label><br> -->
+            <!-- <label for="year-dropdown">Select Year:</label> -->
+            <!-- <select class="year-dropdown" id="year-dropdown" tabindex="0"> -->
+              <!-- <option disabled selected>Select Year</option> -->
+              <!-- <option value="2019" title="January 2019 - December 2019">01/2019 - 12/2019</option> -->
+              <!-- <option value="2020" title="January 2020 - December 2020">01/2020 - 12/2020</option> -->
+              <!-- <option value="2021" title="January 2021 - December 2021">01/2021 - 12/2021</option> -->
+              <!-- <option value="2022" title="January 2022 - December 2022">01/2022 - 12/2022</option> -->
+              <!-- <option value="2023" title="January 2023 - December 2023">01/2023 - 12/2023</option> -->
+              <!-- Add more years as needed -->
+            <!-- </select> -->
+          <!-- </section> -->
+          <!-- <h3 class="total-cost-statement hidden">You did not book any trips in this year</h3> -->
         </header>
         <section class="trips-container">
           <section class="trips">

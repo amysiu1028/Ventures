@@ -122,14 +122,15 @@ export const getTotalCostPerYear = (filterTripsByChosenYear,destinationData) => 
       return cost
       // console.log(costObject[values].flightCostPerPerson)
    },0)
-   console.log("totalcost", totalCost)
+   // console.log("totalcost", totalCost)
    return totalCost
    // return costObject
 }
 
 export const costWithFee = (cost) => {
    const costWithTenPercentFee = cost + (cost * 0.1)
-   return costWithTenPercentFee
+   const roundedCost = costWithTenPercentFee.toFixed(2)
+   return roundedCost
 }
 
 
