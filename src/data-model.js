@@ -44,6 +44,7 @@ export const displaySpecificTravelerTrips = (trips, id) => {
 };
 
 export const travelerPastTrips = (filteredTrips, date) => {
+   console.log("filteredTrips1",filteredTrips)
    const pastTrips = filteredTrips.filter((trip) => {
       return new Date(trip.date) < new Date(date)
    })
@@ -54,6 +55,7 @@ export const travelerPastTrips = (filteredTrips, date) => {
 //data set only has past trips, doesn't have upcoming trips 
 //unless we add it as that...??
 export const travelerUpcomingTrips = (filteredTrips, date) => {
+   console.log("filteredTrips",filteredTrips)
    const upcomingTrips = filteredTrips.filter((trip) => {
       return new Date(trip.date) > new Date(date)
    })
@@ -71,20 +73,8 @@ export const filterTripByYear = (filteredTrips,year) => {
    return filterTripsByChosenYear
 };
 
-// export const getDestinationIDsForTrip = (filterTripsByChosenYear) => {
-//    filterTripsByChosenYear.
-// }
-
-///get destinationi for the filteredTrips by year 
-// so that I can use it
-
 export const getTotalCostPerYear = (filterTripsByChosenYear,destinationData) => {
-   // console.log("filterTripsByChosenYear:",filterTripsByChosenYear)
    console.log("destinationData:",destinationData)
-
-
-   // const allDestinationIDs = filterTripsByChosenYear.map((trip) => trip.destinationID)
-   // console.log("allDestinationIDs",allDestinationIDs)
 
    let costObject = {
       // flightCostPerPerson: [],
@@ -124,18 +114,27 @@ export const costWithFee = (cost) => {
    return roundedCost
 }
 
-export function calculateDuration(startDateValue, endDateValue) {
-   if (startDateValue && endDateValue) {
-       const startDate = new Date(startDateValue);
-       const endDate = new Date(endDateValue);
-       if (startDate.toDateString() === endDate.toDateString()) {
+export function calculateDuration(startDateValue, endDateValue, startDateInput, endDateInput) {
+   if (startDateInput && endDateInput) {
+      const startDate = new Date(endDateInput);
+      const endDate = new Date(startDateInput);
+      if (startDate.toDateString() === endDate.toDateString()) {
          return 1;
-     }
-       const duration = Math.abs(endDate - startDate); // in milliseconds
-       const days = Math.ceil(duration / (1000 * 60 * 60 * 24)); // convert milliseconds to days
-       return days
-      //  console.log("Duration in days:", days);
-       // You can use 'days' as needed for your application
+      }
+      const duration = Math.abs(endDate - startDate) // in milliseconds
+      const days = Math.ceil(duration / (1000 * 60 * 60 * 24)); // convert milliseconds to days
+      return days
+   } else {
+      if (startDateValue && endDateValue) {
+         const startDate = new Date(startDateValue);
+         const endDate = new Date(endDateValue);
+         if (startDate.toDateString() === endDate.toDateString()) {
+           return 1;
+         }
+      }
+      const duration = Math.abs(endDate - startDate); // in milliseconds
+      const days = Math.ceil(duration / (1000 * 60 * 60 * 24)); // convert milliseconds to days
+      return days
    }
 }
 
@@ -146,3 +145,16 @@ export const getDestinationID = (destinataionData,userChosenDestination) => {
    })
    return findID.id
 }
+
+export const costForNewTrip = (newTripObject, destinationData) => {
+   console.log("newTripObject",newTripObject)
+   console.log("destinationData",destinationData)
+   const tripInfo = destinationData.find((destination) => destination.id === newTripObject.destinationID)
+   console.log("tripInfo",tripInfo)
+   const costForTotalDays = (newTripObject.duration * tripInfo.estimatedLodgingCostPerDay)
+   const flightCostForEveryone = (newTripObject.travelers * tripInfo.estimatedFlightCostPerPerson)
+   const total = costForTotalDays + flightCostForEveryone
+   return total
+}
+
+//cost with fee 

@@ -10,9 +10,9 @@ import './css/styles.css';
 import './images/turing-logo.png'
 
 //import functions?
-import { fetchAllPromises, fetchSingleTravelerPromise, sendDataToAPI} from './apiCalls';
-import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID } from "./data-model";
-import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName, displaySortedDestinations } from './domUpdates';
+import { fetchAllPromises, fetchSingleTravelerPromise, fetchPosts} from './apiCalls';
+import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID, costForNewTrip } from "./data-model";
+import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName, displaySortedDestinations, displayNewTripCost } from './domUpdates';
 // import flatpicnpm inkr from 'flatpickr';
 // import datepicker from 'js-datepicker';
 // import datepicker from 'js-datepicker';
@@ -26,20 +26,20 @@ export let allTravelerData;
 export let allTripsData;
 export let allDestinataionData;
 let userID;
-export let pastTrips;
-export let upcomingTrips;
-export let pendingTrips;
 export let tripsByID;
+export let totalCostForNewTrip;
+let duration;
+// let newTripData;   
 
 //querySelectors:
 const submitButton = document.querySelector('.submit-button');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const loginErrorMessage = document.querySelector(".login-error-message");
-const serverDownErrorMessage  = document.querySelector('.errorMessage') //change wheere it's used! And not sure if I want this html!
+const serverDownErrorMessage  = document.querySelector('.error-message') //change wheere it's used! And not sure if I want this html!
 const yearDropdown = document.querySelector('.year-dropdown');
-const startDate = document.querySelector('#startDate');
-const endDate = document.querySelector('#end-date');
+const startDateInput = document.querySelector('#startDate');
+const endDateInput = document.querySelector('#endDate');
 const destinationDropdown = document.querySelector('.destination-dropdown');
 const travelNumbersInput = document.getElementById('travel-numbers');
 const addNewTripButton = document.querySelector('.add-trip-button');
@@ -78,18 +78,24 @@ submitButton.addEventListener("click",function(event) {
                 const todaysDate = getTodaysDate();
 
                 //get past trip data:
-                pastTrips = travelerPastTrips(tripsByID,todaysDate);
+                const pastTrips = travelerPastTrips(tripsByID,todaysDate);
                 
                 //get upcoming trip data:
-                upcomingTrips = travelerUpcomingTrips(tripsByID,todaysDate);
+                const upcomingTrips = travelerUpcomingTrips(tripsByID,todaysDate);
+
                 //get pending data:
-                pendingTrips = travelerPendingTrips(tripsByID);
+                const pendingTrips = travelerPendingTrips(tripsByID);
                 //show single traveler information:
                 displayUserName(singleTravelerValue);
                 loadDashboard();
-                displayPastTrips();
-                displayUpcomingTrips();
-                displayPendingTrips();
+                console.log("pastTrips",pastTrips)
+                displayPastTrips(pastTrips, allDestinataionData);
+                
+                console.log("upcomingTrips",upcomingTrips)
+                displayUpcomingTrips(upcomingTrips, allDestinataionData);
+                
+                console.log("pendingTrips", pendingTrips)
+                displayPendingTrips(pendingTrips, allDestinataionData);
 
                 //Add event listener for year selection:
                 yearDropdown.addEventListener('change', function () {
@@ -105,27 +111,32 @@ submitButton.addEventListener("click",function(event) {
                 let endDateValue;
                 let findDesinationID;
                 
-                datepicker('#startDate', { 
+                const startDatePicker = datepicker(startDateInput, {
+                    minDate: new Date(),
                     onSelect: (instance, dateStr) => {
                         const date = new Date(dateStr);
-                        startDateValue = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
+                        startDateValue = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+                        startDateInput.value = startDateValue;
+                        console.log("startDateValue", startDateValue);
                         resolve(singleTravelerValue);
-                        return startDateValue
+                        return startDateValue;
                     },
                 });
             
-                datepicker('#endDate', { 
+                const endDatePicker = datepicker(endDateInput, {
+                    minDate: new Date(),
                     onSelect: (instance, dateStr) => {
-                        // console.log("date",date)
                         const date = new Date(dateStr);
                         endDateValue = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+                        endDateInput.value = endDateValue;
+                        console.log("endDateValue", endDateValue);
+                        duration = calculateDuration(startDateValue, endDateValue, startDateInput.value, endDateInput.value);
+                        console.log("days", duration);
                         resolve(singleTravelerValue);
-                        const duration = calculateDuration(startDateValue, endDateValue);
-                        console.log("days",duration)
-                        return endDateValue
+                        return endDateValue;
                     },
-                 })   
-                 
+                });  
+
                 travelNumbersInput.addEventListener('input', function () {
                     const inputValue = travelNumbersInput.value;
                     if (!Number.isInteger(parseFloat(inputValue)) || parseInt(inputValue) < 1) {
@@ -146,30 +157,22 @@ submitButton.addEventListener("click",function(event) {
                 addNewTripButton.addEventListener('click', function(event) {
                     event.preventDefault();
                     const travelers = parseInt(travelNumbersInput.value);
-                    const duration = calculateDuration(startDateValue, endDateValue);
-                    const nextID = allTripsData.length + 1; //have to find a way to update trips data... each time added!!
+                    duration = calculateDuration(startDateValue, endDateValue, startDateInput.value, endDateInput.value);
+                    const nextID = allTripsData.length + 1; 
                     userID = parseInt(userID)
-                    
-                    // Set the new trip ID
-                    // newTripData.id = nextID;
-
-                    // Construct the trip data object
+                
                     const newTripData = {
                         id: nextID,
                         userID: userID,
                         destinationID: findDesinationID,
                         travelers: travelers,
-                        date: startDateValue,
+                        date: startDateValue || startDateInput.value,
                         duration: duration,
                         status: 'pending',
                         suggestedActivities: []
                     };
-                    console.log("newTripData",newTripData);
-                    sendDataToAPI(newTripData)
-                    console.log("allTripsData",allTripsData)
-                   //NEXT STEPS: // sendDataToAPI(newTripData);
 
-                // console.log("tripsByID",tripsByID)
+                    fetchPosts(newTripData) 
                 })
             })
             .catch((error) => {
