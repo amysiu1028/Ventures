@@ -12,6 +12,7 @@ const upcomingTripsBox = document.querySelector('.upcoming-trips');
 const pendingTripsBox = document.querySelector('.pending-trips');
 const totalCostStatement = document.querySelector('.total-cost-statement');
 const helloUsername = document.querySelector('.hello-username');
+const destinationDropdown = document.querySelector('.destination-dropdown');
 // const loginErrorMessage = document.querySelector(".login-error-message");
 
 //show login message errors
@@ -94,5 +95,26 @@ export function displayCostPerYear(year,id, cost, costWithFee) {
   }
 }
 
+export function displaySortedDestinations(destinationsData) {
+  const sortedDestinations = destinationsData.sort((a, b) => {
+    return a.destination.localeCompare(b.destination);
+  });
+  // Build the HTML content for the initial option
+  let optionsHTML = '<option disabled selected>Select Destination</option>';
+  // Add more options dynamically
+  sortedDestinations.forEach(destination => {
+    optionsHTML += `<option value="${destination.id}">${destination.destination}</option>`;
+  });
+  // Set the HTML content to the select element
+  destinationDropdown.innerHTML = optionsHTML;
+
+  //MAYBE THIS IS WHAT I NEED TO ADD.... FOR ADDING A NEW DESTINATION
+   // Add more options after the initial ones
+   optionsHTML += '<option>New Destination 1</option>';
+   optionsHTML += '<option>New Destination 2</option>';
+
+   // Update the HTML content of the select element
+   destinationDropdown.innerHTML = optionsHTML;
+};
 //On the calculate total price:
 //extension could be adding a table or list of trip 1: destination: cost: info with scroll

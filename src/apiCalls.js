@@ -1,6 +1,7 @@
 
 
 import { userID } from "./scripts.js"
+import { tripsByID } from "./scripts.js";
 // console.log("userID", userID)
 
 //querySelectors:
@@ -65,47 +66,30 @@ export const fetchPosts = (newTripData) => {
       if (!response.ok) {
         throw new Error (`${response.status}: Failed to fetch data`)
       }
-    return response.json()
+        return response.json()
     })
     .then (postData => {
         console.log("postData",postData)
-    //   hydrationDataAll.push(json);
-    //   console.log(hydrationDataAll, 'inside POST func')
-    //   let newHydrationData = filterUserData(hydrationDataAll, currentUser); 
-    //   let todaysHydrationDate = getLatestData(newHydrationData);
-    //   console.log(todaysHydrationDate, 'should be newly added')
-    //   let waterPerDayPerWeek = getLatestData(newHydrationData, 'week');
-    //   console.log(waterPerDayPerWeek, 'should included 7 days');
-    //   waterChartToDom.destroy(); //bc we imported from another file, we can't set that...
-    //   let newWaterChartToDom = waterChart(waterPerDayPerWeek);
-    //   displayWaterInfo(todaysHydrationDate, newWaterChartToDom);
     })
     .catch (error => {
       alert(error.message)
     })
   }
 
-  export const sendDataToAPI = (userID) => {
-    // let ounces = parseInt(ouncesInput.value);
-    // if (!isNaN(new Date(dateInput.value)) && typeof ounces === 'number' && ounces <= 675 && ouncesInput.value) {
-    //   const api = {
-    //     id: <number>, 
-    //     userID: userID,
-    //     destinationID: <number>, 
-    //     travelers: <number>, 
-    //     date: <string 'YYYY/MM/DD'>, 
-    //     duration: <number>, 
-    //     status: <string 'approved' or 'pending'>, 
-    //     suggestedActivities: <array of strings>
-    }
-      
+//   export const sendDataToAPI = (tripsBycurrentUser, allDestinataionData, allTripsData) => {
+//     // console.log("tripsByID",tripsByID)
 
-      
-//       fetchPosts(api);
-//       return api;
-//     } else {
-//       errorEl.classList.toggle("hidden");
-//       errorEl.innerText = 'One or more was inputted incorrectly: Incorrect date and/or unreasonable number';
+    
+//     // let ounces = parseInt(ouncesInput.value);
+//     // if (!isNaN(new Date(dateInput.value)) && typeof ounces === 'number' && ounces <= 675 && ouncesInput.value) {
+//       const api = {
+//         id: this has to be added onto the trips data id where the last one has an id of 203.
+//         userID: tripsBycurrentUser[0].id,
+//         destinationID: I don't know how to get this... wihtout the destination data. If user chooses an id and it matches this one.
+//         travelers: user input on number of travelers
+//         date: user input on date 'YYYY/MM/DD'>, 
+//         duration: calculated by const duration = calculateDuration(startDateValue, endDateValue);
+//         status: since user is adding it, it'll be pending. 
+//         suggestedActivities: [] (this stays empty)
 //     }
-//   }
-  
+//   }  

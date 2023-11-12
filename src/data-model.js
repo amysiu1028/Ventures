@@ -1,10 +1,5 @@
-// import { allTripsData } from './scripts.js'
-// import { trips } from "./data/sampleData.js"; 
-// console.log("trips",trips)
-//get user ID to use: we can use it in get singleTravelData
 export const getUserID = (username) => {
    const pattern = /^traveler([1-9]|[1-4][0-9]|50)$/;
-   //if pattern mataches the username input string
    if (pattern.test(username)) {
       let usernameParts = username.split(/(\d+)/).filter(Boolean)
       if (usernameParts.length === 2) {
@@ -41,9 +36,6 @@ export const getTodaysDate = () => {
    return formattedDate
 };
 
-//how are we using the getsingleTraveler
-// export function getSingleTraveler(allTripsData,userID)
-//tripsData have to create a sample
 export const displaySpecificTravelerTrips = (trips, id) => {
    //search parseInt more
    // ID = parseInt(ID)
@@ -53,8 +45,6 @@ export const displaySpecificTravelerTrips = (trips, id) => {
 
 export const travelerPastTrips = (filteredTrips, date) => {
    const pastTrips = filteredTrips.filter((trip) => {
-      // console.log("new Date(trip.date)",new Date(trip.date))
-      // console.log("new Date(date)",new Date(date))
       return new Date(trip.date) < new Date(date)
    })
    return pastTrips
@@ -133,7 +123,26 @@ export const costWithFee = (cost) => {
    return roundedCost
 }
 
+export function calculateDuration(startDateValue, endDateValue) {
+   if (startDateValue && endDateValue) {
+       const startDate = new Date(startDateValue);
+       const endDate = new Date(endDateValue);
+       const duration = Math.abs(endDate - startDate); // in milliseconds
+       const days = Math.ceil(duration / (1000 * 60 * 60 * 24)); // convert milliseconds to days
+       return days
+      //  console.log("Duration in days:", days);
+       // You can use 'days' as needed for your application
+   }
+}
 
+export const getDestinationID = (destinataionData,userChosenDestination) => {
+   const userChosenID = parseInt(userChosenDestination)
+   const findID = destinataionData.find((place) => {
+      console.log("place",place)
+      return place.id === userChosenID
+   })
+   return findID.id
+}
 // export const calculateTotalCost = (costObject) => {
 //    const totalCostForEveryone = Object.keys(costObject).reduce((cost,values) => {
 //       costObject[values].flightCostPerPerson.
