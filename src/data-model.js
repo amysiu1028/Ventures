@@ -39,7 +39,7 @@ export const getTodaysDate = () => {
 export const displaySpecificTravelerTrips = (trips, id) => {
    //search parseInt more
    // ID = parseInt(ID)
-   const filterTripByID = trips.filter((traveler) => traveler.userID === parseInt(id))
+   const filterTripByID = trips.filter((traveler) => parseInt(traveler.userID) === parseInt(id))
    return filterTripByID
 };
 
@@ -61,6 +61,7 @@ export const travelerUpcomingTrips = (filteredTrips, date) => {
 }
 
 export const travelerPendingTrips = (filteredTrips) => {
+
    const pendingTrips = filteredTrips.filter((trip) => trip.status = 'pending')
    return pendingTrips
 }
@@ -127,6 +128,9 @@ export function calculateDuration(startDateValue, endDateValue) {
    if (startDateValue && endDateValue) {
        const startDate = new Date(startDateValue);
        const endDate = new Date(endDateValue);
+       if (startDate.toDateString() === endDate.toDateString()) {
+         return 1;
+     }
        const duration = Math.abs(endDate - startDate); // in milliseconds
        const days = Math.ceil(duration / (1000 * 60 * 60 * 24)); // convert milliseconds to days
        return days
@@ -138,41 +142,7 @@ export function calculateDuration(startDateValue, endDateValue) {
 export const getDestinationID = (destinataionData,userChosenDestination) => {
    const userChosenID = parseInt(userChosenDestination)
    const findID = destinataionData.find((place) => {
-      console.log("place",place)
       return place.id === userChosenID
    })
    return findID.id
 }
-// export const calculateTotalCost = (costObject) => {
-//    const totalCostForEveryone = Object.keys(costObject).reduce((cost,values) => {
-//       costObject[values].flightCostPerPerson.
-//       console.log(costObject[values].flightCostPerPerson)
-//    },0)
-// }
-//create a function that gets totalCostPeryear(filteredTipsByChosenYear, pull out number of travelers, and use destination data to get the cost per traveler per flight and cost per day to calcualte total cost without 10% additional agent fee)
-
-// seaparate one with 10% additional agent fee?
-
-//so that I can use it for
-
-// export const calculateTotalCostPerYear = (filterTripsByChosenYear) => {
-//    console.log(filterTripsByChosenYear)
-//    // if (filterTripsByChosenYear.length > 0) {
-//    //    const totalCostPerYear = filterTripsByChosenYear.reduce((accum,currTrip) => {
-//    //       accum += currTrip.
-//    //    },0)
-//    // }
-// }
-//can choose to show that trip as a list on the dom if you'd like... but don't need to
-
-// export const getTripsByYear = (filteredTrip) => {
-//    const filteredTrip = filteredTrip.filter((trip) => )
-// }
-// export const calculateTotalCost = (filteredTrips, destinationData, id, year) => {
-//    console.log("filteredTrips",filteredTrips)
-//    console.log("destinationData",destinationData)
-//    console.log("id",id)
-
-// }
-
-// export const calculateCostWithFee = (pastTrips)

@@ -10,7 +10,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 
 //import functions?
-import { fetchAllPromises, fetchSingleTravelerPromise } from './apiCalls';
+import { fetchAllPromises, fetchSingleTravelerPromise, sendDataToAPI} from './apiCalls';
 import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID } from "./data-model";
 import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName, displaySortedDestinations } from './domUpdates';
 // import flatpicnpm inkr from 'flatpickr';
@@ -148,6 +148,7 @@ submitButton.addEventListener("click",function(event) {
                     const travelers = parseInt(travelNumbersInput.value);
                     const duration = calculateDuration(startDateValue, endDateValue);
                     const nextID = allTripsData.length + 1; //have to find a way to update trips data... each time added!!
+                    userID = parseInt(userID)
                     
                     // Set the new trip ID
                     // newTripData.id = nextID;
@@ -164,7 +165,8 @@ submitButton.addEventListener("click",function(event) {
                         suggestedActivities: []
                     };
                     console.log("newTripData",newTripData);
-
+                    sendDataToAPI(newTripData)
+                    console.log("allTripsData",allTripsData)
                    //NEXT STEPS: // sendDataToAPI(newTripData);
 
                 // console.log("tripsByID",tripsByID)

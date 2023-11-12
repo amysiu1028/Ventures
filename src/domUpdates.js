@@ -75,7 +75,7 @@ export function displayPendingTrips() {
     <h3>Date: ${trip.date}</h3>
     <h3>Number of Travelers: ${trip.travelers}</h3>
     <h3>Cost: have to calculate </h3>
-    <h3>Trip ID: ${trip.id}</h3>
+    <h3>Trip ID: ${parseInt(trip.id)}</h3>
   </section>
 `).join('');
 }
@@ -94,7 +94,7 @@ export function displayCostPerYear(year,id, cost, costWithFee) {
     totalCostStatement.innerText = `You did not book any trips in this ${year}`
   }
 }
-
+ 
 export function displaySortedDestinations(destinationsData) {
   const sortedDestinations = destinationsData.sort((a, b) => {
     return a.destination.localeCompare(b.destination);
