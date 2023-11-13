@@ -1,9 +1,11 @@
 body {
   background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-  background-image: url('src/images/vecteezy_yellow-suitcase-with-sun-glasses-hat-and-camera-on-pastel_6792559_368.jpgg');
-  background-size: cover; /* Adjust this property to control how the background image is displayed */
-  background-position: center; /* Adjust this property to control the position of the background image */
-  background-repeat: no-repeat; /* Ensures that the background image is not repeated */
+  background-image: url('../images/vecteezy_yellow-suitcase-with-sun-glasses-hat-and-camera-on-pastel_6792559_368.jpg');
+  /* background-size: cover; */
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  
   font-family: 'Playfair Display', serif;
   font-size: 30px;
   height: 100vh;
@@ -17,6 +19,7 @@ body {
 
 .login {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   width: 80vw;
 }
@@ -34,7 +37,7 @@ h2 {
 }
 
 .login-box {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   margin: 5% 10%;
   padding: 8%;
   border-radius: 8%;
@@ -111,7 +114,7 @@ h2 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .dashboard-header {
@@ -137,21 +140,6 @@ h2 {
   margin-bottom: 2%;
 }
 
-.dropdown-container,
-.number-travelers,
-.start-date,
-.end-date,
-.destination-dropdown,
-.add-trip-button,
-.new-trip-cost,
-#year-dropdown,
-.submit-button  {
-  margin: 2% 0%;
-  font-weight: bold;
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-}
-
 #endDate, 
 #startDate,
 #travel-numbers,
@@ -160,6 +148,20 @@ h2 {
   width: 175px; /* Adjust the width according to your preference */
   padding: 6px; 
    /* Optional: Add margin to separate fields */
+}
+
+.dropdown-container,
+.number-travelers,
+.start-date,
+.end-date,
+.destination-dropdown,
+.add-trip-button,
+#year-dropdown,
+.submit-button  {
+  margin: 2% 0%;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
 }
 
 #year-dropdown,
@@ -204,9 +206,12 @@ h2 {
   border-radius: 3%;
 }
 
-.trip-box h1 {
+.trip-box h1,
+p {
   font-size: 15px;
+  font-weight: bold;
 }
+
 
 .total-cost-statement {
   font-size: 20px;
@@ -225,6 +230,8 @@ h2 {
 .new-trip-statement {
   font-size: 20px;
   font-weight: 100;
+  margin: 0px;
+  text-align: center;
 }
 
 .sr-only {

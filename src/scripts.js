@@ -11,7 +11,7 @@ import './images/turing-logo.png'
 
 //import functions?
 import { fetchAllPromises, fetchSingleTravelerPromise, fetchPosts} from './apiCalls';
-import { getUserID, handleLogin, displaySpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID, costForNewTrip } from "./data-model";
+import { getUserID, handleLogin, getSpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID, costForNewTrip } from "./data-model";
 import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName, displaySortedDestinations, displayNewTripCost } from './domUpdates';
 // import flatpicnpm inkr from 'flatpickr';
 // import datepicker from 'js-datepicker';
@@ -26,6 +26,8 @@ export let allTravelerData;
 export let allTripsData;
 export let allDestinataionData;
 let userID;
+console.log("userID",userID)
+
 export let tripsByID;
 export let totalCostForNewTrip;
 let duration;
@@ -64,6 +66,7 @@ window.addEventListener('DOMContentLoaded', function () {
 submitButton.addEventListener("click",function(event) {
     event.preventDefault() 
     userID = getUserID(usernameInput.value);
+
     const loginResult = handleLogin(usernameInput.value, passwordInput.value, userID);
     if (loginResult === true) {
         new Promise((resolve,reject) => {
@@ -71,10 +74,11 @@ submitButton.addEventListener("click",function(event) {
             .then((singleTravelerValue) => {
                 //change userName... with displayUserName function
                 serverDownErrorMessage.classList.add('hidden');
-                
+
                 // const todaysDate = getTodaysDate();
                 //use todaysDate as a parameter
-                tripsByID = displaySpecificTravelerTrips(allTripsData,userID);
+                tripsByID = getSpecificTravelerTrips(allTripsData,userID);
+                console.log("tripsByID",tripsByID)
                 const todaysDate = getTodaysDate();
 
                 //get past trip data:
@@ -100,6 +104,8 @@ submitButton.addEventListener("click",function(event) {
                 //Add event listener for year selection:
                 yearDropdown.addEventListener('change', function () {
                     const selectedYear = yearDropdown.value;
+                    console.log("selectedYear,",selectedYear)
+                    console.log("tripsByID",tripsByID)
                     const filterTripsByChosenYear = filterTripByYear(tripsByID, selectedYear);
                     console.log("filterTripsByChosenYear",filterTripsByChosenYear);
                     const totalCost = getTotalCostPerYear(filterTripsByChosenYear,allDestinataionData);
@@ -159,8 +165,9 @@ submitButton.addEventListener("click",function(event) {
                     const travelers = parseInt(travelNumbersInput.value);
                     duration = calculateDuration(startDateValue, endDateValue, startDateInput.value, endDateInput.value);
                     const nextID = allTripsData.length + 1; 
-                    userID = parseInt(userID)
-                
+                    
+                    // userID = parseInt(userID)
+
                     const newTripData = {
                         id: nextID,
                         userID: userID,

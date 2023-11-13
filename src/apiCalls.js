@@ -1,11 +1,14 @@
 import { allTripsData } from "./scripts.js";
-import { travelerUpcomingTrips, costForNewTrip, costWithFee, getTodaysDate } from "./data-model.js";
-import { displayUpcomingTrips, displayNewTripCost } from "./domUpdates.js";
+import { travelerUpcomingTrips, costForNewTrip, costWithFee, getTodaysDate, travelerPendingTrips, getSpecificTravelerTrips, getUserID } from "./data-model.js";
+import { displayUpcomingTrips, displayNewTripCost, displayPendingTrips } from "./domUpdates.js";
 import { allDestinataionData } from "./scripts.js";
 
 //querySelectors:
-const errorMessage = document.querySelector('.error-message');
+// const errorMessage = document.querySelector('.error-message');
 const upcomingTripsBox = document.querySelector('.upcoming-trips');
+const pendingTripsBox = document.querySelector('.pending-trips');
+const usernameInput = document.getElementById('username');
+
 
 //all of them have ids
 export const urls = [
@@ -67,11 +70,16 @@ export const fetchPosts = (newTrip) => {
         const updatedTravelerUpcomingTrips = travelerUpcomingTrips(allTripsData, todaysDate);
         upcomingTripsBox.innerHTML = "";
         displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
+        const userID = getUserID(usernameInput.value);
+        const tripsByID = getSpecificTravelerTrips(allTripsData,userID)
+        const pendingTrips = travelerPendingTrips(tripsByID)
+        pendingTripsBox.innerHTML = "";
+        displayPendingTrips(pendingTrips, allDestinataionData);
         const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
         const totalCostWithFee = costWithFee(totalCostForNewTrip);
         displayNewTripCost(totalCostWithFee);
     })
     .catch (error => {
-        alert(error.message);
+        console.log(error.message);
     });
 };

@@ -12,7 +12,9 @@ const totalCostStatement = document.querySelector('.total-cost-statement');
 const helloUsername = document.querySelector('.hello-username');
 const destinationDropdown = document.querySelector('.destination-dropdown');
 const newTripCost = document.querySelector('.new-trip-cost');
-
+const noPastTrips = document.querySelector('.no-past-trips');
+const noUpcomingTrips = document.querySelector('.no-upcoming-trips');
+const noPendingTrips = document.querySelector('.no-pending-trips');
 //show login message errors
 export function displayLoginErrorMessage(message) {
   loginErrorMessage.classList.remove('hidden');
@@ -26,61 +28,74 @@ export function loadDashboard() {
 }
 
 export const displayUserName = (singleTravelData) => {
-  helloUsername.innerText = `Hello ${singleTravelData.name}`;
+  helloUsername.innerText = `Hello ${singleTravelData.name}!`;
 };
 
 export function displayPastTrips(pastTripsData, destinationData) {
-  pastTripsBox.innerHTML += pastTripsData.map((trip) => {
-    const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
-    if (matchingDestinationByID) {
-      return `
-        <section class="trip-box">
-          <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}" />
-          <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
-          <h1 tabindex="0">Date: ${trip.date}</h1>
-          <h1 tabindex="0">Duration: ${trip.duration}</h1>
-          <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
-          <h1 tabindex="0">Trip ID: ${trip.id}</h1>
-        </section>
-      `;
-    }
-  });
+  if (typeof pastTripsData === 'string') {
+    noPastTrips.classList.remove('hidden');
+  } else {
+
+    pastTripsBox.innerHTML += pastTripsData.map((trip) => {
+      const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
+      if (matchingDestinationByID) {
+        return `
+          <section class="trip-box">
+            <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}" />
+            <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
+            <h1 tabindex="0">Date: ${trip.date}</h1>
+            <h1 tabindex="0">Duration: ${trip.duration}</h1>
+            <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
+            <h1 tabindex="0">Trip ID: ${trip.id}</h1>
+          </section>
+        `;
+      }
+    });
+  }
 }
 
 export function displayUpcomingTrips(upcomingTripsData, destinationData) {
-  upcomingTripsBox.innerHTML += upcomingTripsData.map((trip) => {
-    const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
-    if (matchingDestinationByID) {
-      return `
-        <section class="trip-box">
-          <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
-          <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
-          <h1 tabindex="0">Date: ${trip.date}</h1>
-          <h1 tabindex="0">Duration: ${trip.duration}</h1>
-          <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
-          <h1 tabindex="0">Trip ID: ${trip.id}</h1>
-        </section>
-      `;
-    }
-  });
+  if (typeof upcomingTripsData === 'string') {
+    noUpcomingTrips.classList.remove('hidden');
+  } else {
+    upcomingTripsBox.innerHTML += upcomingTripsData.map((trip) => {
+      const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
+      if (matchingDestinationByID) {
+        return `
+          <section class="trip-box">
+            <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
+            <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
+            <h1 tabindex="0">Date: ${trip.date}</h1>
+            <h1 tabindex="0">Duration: ${trip.duration}</h1>
+            <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
+            <h1 tabindex="0">Trip ID: ${trip.id}</h1>
+          </section>
+        `;
+      }
+    });
+  }
 }
 
 export function displayPendingTrips(pendingTripsData, destinationData) {
-  pendingTripsBox.innerHTML += pendingTripsData.map((trip) => {
-    const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
-    if (matchingDestinationByID) {
-      return `
-        <section class="trip-box">
-          <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
-          <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
-          <h1 tabindex="0">Date: ${trip.date}</h1>
-          <h1 tabindex="0">Duration: ${trip.duration}</h1>
-          <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
-          <h1 tabindex="0">Trip ID: ${trip.id}</h1>
-        </section>
-      `;
-    }
-  });
+  if (typeof pendingTripsData === 'string') {
+    noPendingTrips.classList.remove('hidden');
+  } else {
+    pendingTripsBox.innerHTML += pendingTripsData.map((trip) => {
+      const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
+      if (matchingDestinationByID) {
+        return `
+          <section class="trip-box">
+            <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
+            <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
+            <h1 tabindex="0">Date: ${trip.date}</h1>
+            <h1 tabindex="0">Duration: ${trip.duration}</h1>
+            <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
+            <h1 tabindex="0">Trip ID: ${trip.id}</h1>
+          </section>
+        `;
+      }
+    });
+  }
 }
 
 export function displayCostPerYear(year, id, cost, costWithFee) {
@@ -90,7 +105,7 @@ export function displayCostPerYear(year, id, cost, costWithFee) {
     totalCostStatement.innerHTML = `<h3 tabindex="0"><strong>${year} Total Cost </strong>: $${costWithFee}</h3>`;
   } else {
     totalCostStatement.classList.remove('hidden');
-    totalCostStatement.innerText = `You did not book any trips in this ${year}`;
+    totalCostStatement.innerText = `You did not book any trips in this ${year} through Venture Travel`;
   }
 }
 
@@ -98,13 +113,10 @@ export function displaySortedDestinations(destinationsData) {
   const sortedDestinations = destinationsData.sort((a, b) => {
     return a.destination.localeCompare(b.destination);
   });
-  // Build the HTML content for the initial option
   let optionsHTML = '<option disabled selected>Select Destination</option>';
-  // Add more options dynamically
   sortedDestinations.forEach(destination => {
     optionsHTML += `<option value="${destination.id}" tabindex="0">${destination.destination}</option>`;
   });
-  // Set the HTML content to the select element
   destinationDropdown.innerHTML = optionsHTML;
 }
 
