@@ -10,16 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
+  <link rel="stylesheet" href="src/css/styles.css">
+  <!-- <link rel="stylesheet" href="path/to/your/styles.css"> -->
+
 </head>
-<body>
+<body aria-live="polite">
   <h1 class="error-message hidden">Error message for server when down</h1>
     <section class="login"> 
       <section class="welcome"> 
-        <h1 tabindex="0">Welcome to Venture Travel</h1>
-        <h2 tabindex="0">Ready to start your journey</h2>
+        <h1 class="add-spacing-to-headers" tabindex="0">Welcome to Venture Travel</h1>
+        <h2 class="add-spacing-to-headers" tabindex="0">Ready to start your journey</h2>
       </section>
       <section class="login-box">
-        <h1 tabindex="0">Login to Your Account</h1>
+        <h1 class="login-header" tabindex="0">Login to Your Account</h1>
         <form class="login-container"> 
           <section class="login-inputs"> 
             <label for="username" tabindex="0">Username: </label>
@@ -29,7 +32,7 @@
             <label for="password" tabindex="0">Password: </label>
             <input type="password" id="password" class="inputField" name="password" placeholder="Enter password..." tabindex="0"required>
           </section>
-          <button type="submit" class="submit-button" aria-label="Please press enter on this submit button to login after entering your username and login" tabindex="0">Submit</button>
+          <button type="submit" class="submit-button" aria-label="Press enter on this submit button to log in with your provided username and password" tabindex="0">Submit</button>
           <p class="login-error-message hidden">Error Message</p>
         </form>
       </section>
@@ -39,7 +42,7 @@
       <aside class="left-aside">
         <h1 class="hello-username" tabindex="0">Hello Username</h1>
         <section class="dropdown-container"> 
-          <label class="select-year-title hidden" aria-live="polite" aria-atomic="true"  tabindex="0">Total Cost for Selected Year:</label><br>
+          <label class="select-year-title hidden" aria-atomic="true"  tabindex="0">Total Cost for Selected Year:</label><br>
           <label for="year-dropdown" tabindex="0">Select Year:</label>
           <select class="year-dropdown" id="year-dropdown" tabindex="0">
             <option aria-label="Please click down arrow to select year" disabled selected>Select Year Below</option>
@@ -59,22 +62,23 @@
           <section class="add-new-trip"> 
             <form>
               <label for="startDate" class="start-date" tabindex="0">Start Date:</label>
-              <input id="startDate" type="text" tabindex="0" aria-haspopup="dialog" aria-expanded="false" aria-describedby="startDateDescription" required>
-              <span id="startDateDescription"	aria-label="String" class="sr-only">Start Format: YYYY/MM/DD</span>
+              <input id="startDate" type="text" tabindex="0" placeholder="YYYY/MM/DD" aria-haspopup="dialog" aria-expanded="false" aria-describedby="startDateDescription" required>
+              <span id="startDateDescription"	aria-label="Start Date Format: YYYY/MM/DD" class="sr-only">Start Format: YYYY/MM/DD</span>
       
               <label for="endDate" class="end-date" tabindex="0">End Date:</label>
-              <input id="endDate" type="text" tabindex="0" aria-haspopup="dialog" aria-expanded="false" aria-describedby="endDateDescription" required>
-              <span id="endDateDescription"	aria-label="String" class="sr-only">End Format: YYYY/MM/DD</span>
+              <input id="endDate" type="text" tabindex="0" placeholder="YYYY/MM/DD" aria-haspopup="dialog" aria-expanded="false" aria-describedby="endDateDescription" required>
+              <span id="endDateDescription"	aria-label="End Date Format: YYYY/MM/DD" class="sr-only">End Format: YYYY/MM/DD</span>
       
-              <label class="aside-input-label" for="traverNumbers" tabindex="0">Number of Travelers:</label>
-              <input type="number" id="travel-numbers" class="travel-numbers" placeholder="Enter Number of Travelers..." tabindex="0" min="1" required>
+              <label class="number-travelers" for="travel-numbers" tabindex="0">Number of Travelers:</label>
+              <input type="number" id="travel-numbers" class="travel-numbers" placeholder="Enter Number of Travelers" tabindex="0" min="1" required>
       
-              <select class="destination-dropdown" tabindex="0" aria-describedby="destinationDescription">
+              <!-- <label for="destination-dropdown">Select Destination:</label> -->
+              <select id="destination-dropdown" class="destination-dropdown" tabindex="0" aria-describedby="destinationDescription">
                 <option>Will add them here</option>
               </select>
               <span id="destinationDescription" class="sr-only">Please select your destination from the dropdown list.</span>
       
-              <button class="add-trip-button" tabindex="0">Add New Trip</button>
+              <button class="add-trip-button" tabindex="0" aria-label="Press enter on this add trip button to add a new trip after providing trip details" >Add Trip</button>
               <section class="new-trip-cost hidden" tabindex="0"></section>
             </form>
           </section>
