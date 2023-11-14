@@ -34,7 +34,7 @@ h2 {
 }
 
 .login-box {
-  background-color: rgba(225, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.75);
   margin: 1% 10%;
   padding: 3% 8%;
   border-radius: 8%;
@@ -85,7 +85,6 @@ h2 {
 
 .dashboard {
   display: flex;
-  border: 2px solid #ffffff;
   width: 90vw; 
   height: 80vh;
 }
@@ -96,8 +95,8 @@ h2 {
 }
 
 .left-aside {
-  border: 2px solid #ffffff;
-  background-color: white;
+  border: 2px solid #F4BE74;
+  background-color: rgba(244, 190, 116, 0.95);
   width: 23%;
   height: 100%;
   display: flex;
@@ -124,10 +123,11 @@ h2 {
   align-items: center;
   height: 30%;
 }
-
-h1, 
+ 
+h1,
 .username, 
-.password {
+.password,
+.start-journey {
   font-size: 30px;
   font-weight: bold;
   margin: 3% 0%;
@@ -198,7 +198,7 @@ h2 {
   padding: 3%;
   width: 20vw;
   text-align: center;
-  background: white;
+  background: rgba(244, 190, 116, 0.85);
   margin: 1%;
   border-radius: 3%;
   max-height: 90vh;
@@ -220,6 +220,7 @@ h2 {
   margin: 4.5% 0.1%;
   color: #0E1929;
   border-radius: 3%;
+  background: white;
 }
 
 .trip-box h1,
@@ -313,6 +314,11 @@ p {
   width: 260px;
   height: 250px;
 }
+
+.welcome-header {
+  color: #2F486C;
+}
+
 .hidden {
   display: none;
 }

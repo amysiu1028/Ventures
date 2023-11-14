@@ -22,8 +22,8 @@
   <h1 class="error-message hidden">Error message for server when down</h1>
     <section class="login"> 
       <section class="welcome"> 
-        <h1 class="add-spacing-to-headers" tabindex="0">Welcome to Venture Travel</h1>
-        <h2 class="add-spacing-to-headers wave" tabindex="0">Ready to start your journey</h2>
+        <h1 class="add-spacing-to-headers welcome-header" tabindex="0">Welcome to Venture Travel</h1>
+        <h2 class="add-spacing-to-headers start-journey" tabindex="0">Ready to start your journey</h2>
       </section>
       <section class="login-box">
         <img class="logo" src="../images/VentureLogo.png" alt="Venture Travel Logo">
@@ -45,11 +45,11 @@
   <main> 
     <section class="dashboard hidden"> 
       <aside class="left-aside">
-        <img class="logo" src="../images/VentureLogo.jpg" alt="Venture Travel Logo">
+        <img class="logo" src="../images/VentureLogo.png" alt="Venture Travel Logo">
         <h1 class="hello-username" tabindex="0">Hello Username</h1>
         <section class="dropdown-container"> 
           <label class="select-year-title hidden" aria-atomic="true"  tabindex="0">Total Cost for Selected Year:</label><br>
-          <label class="year-dropdown" for="year-dropdown" tabindex="0">Select Year:</label>
+          <label id="year-dropdown" for="year-dropdown" tabindex="0">Select Year:</label>
           <select class="year-dropdown" id="year-dropdown" tabindex="0">
             <option aria-label="Please click down arrow to select year" disabled selected>Select Year Below</option>
             <option value="2019" title="January 2019 - December 2019" tabindex="0">01/2019 - 12/2019</option>
@@ -89,8 +89,8 @@
                 <span id="destinationDescription" class="sr-only">Please select your destination from the dropdown list.</span>
               </section>
               <button class="add-trip-button trip-section-space" tabindex="0" aria-label="Press enter on this add trip button to add a new trip after providing trip details" >Add Trip</button>
-              <section class="new-trip-cost hidden" tabindex="0"></section>
             </form>
+            <section class="new-trip-cost hidden" tabindex="0"></section>
           </section>
         </header>
         <section class="trips-container">

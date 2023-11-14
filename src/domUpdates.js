@@ -98,8 +98,11 @@ export function displayPendingTrips(pendingTripsData, destinationData) {
   }
 }
 
-export function displayCostPerYear(year, filteredTrips, costWithFee) {
-  const filteredByYear = filterTripByYear(filteredTrips, year);
+export function displayCostPerYear(year, filteredTripData, costWithFee) {
+  console.log("year",year)
+  console.log("fiteredTripByYear",filterTripByYear)
+  console.log("costWithFee",costWithFee)
+  const filteredByYear = filterTripByYear(filteredTripData, year);
   if (filteredByYear.length > 0) {
     totalCostStatement.classList.remove('hidden');
     totalCostStatement.innerHTML = `<h3 tabindex="0"><strong>${year} Total Cost </strong>: $${costWithFee}</h3>`;

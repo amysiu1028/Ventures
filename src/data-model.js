@@ -58,7 +58,7 @@ export const travelerPendingTrips = (filteredTrips) => {
 };
 
 export const filterTripByYear = (filteredTrips, year) => {
-   const filterTripsByChosenYear = filteredTrips.filter((trip) => new Date(trip.date).getFullYear().toString() === year);
+   const filterTripsByChosenYear = filteredTrips.filter((trip) => (new Date(trip.date).getFullYear().toString()) === year);
    return filterTripsByChosenYear;
 };
 
