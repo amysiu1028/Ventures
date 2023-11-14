@@ -35,8 +35,8 @@ h2 {
 
 .login-box {
   background-color: rgba(225, 255, 255, 0.75);
-  margin: 5% 10%;
-  padding: 8%;
+  margin: 1% 10%;
+  padding: 3% 8%;
   border-radius: 8%;
   display: flex;
   flex-direction: column;
