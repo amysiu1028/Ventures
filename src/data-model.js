@@ -63,8 +63,6 @@ export const filterTripByYear = (filteredTrips, year) => {
 };
 
 export const getTotalCostPerYear = (filterTripsByChosenYear, destinationData) => {
-   console.log("filterTripsByChosenYear",filterTripsByChosenYear)
-   console.log("destinationData",destinationData)
    let costObject = {
       flightCostPerTrip: [],
       totalLodgingCost: []
@@ -85,7 +83,6 @@ export const getTotalCostPerYear = (filterTripsByChosenYear, destinationData) =>
       });
       return cost;
    }, 0);
-
    return totalCost;
 };
 

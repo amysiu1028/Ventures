@@ -179,7 +179,7 @@ describe('Calculate Cost functions:', () => {
   beforeEach(() => {
     username = 'traveler5';
     id = getUserID(username);
-    year = 2020;
+    year = '2020';
     trips = [
       {"id": 117, "userID": 1, "destinationID": 28, "travelers": 3, "date": "2021/01/09", "duration": 15, "status": "approved", "suggestedActivities": []},
       {"id": 236, "userID": 1, "destinationID": 33, "travelers": 1, "date": "2023/11/12", "duration": 7, "status": "pending", "suggestedActivities": []},
@@ -217,7 +217,7 @@ describe('Calculate Cost functions:', () => {
       { "id": 16, "destination": "Bangkok, Thailand", "estimatedLodgingCostPerDay": 35, "estimatedFlightCostPerPerson": 988, "image": "https://images.unsplash.com/photo-1563492065599-3520f775eeed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80", "alt": "ornate buildings with a garden during the day" }
     ];
   });
-  
+  //loook at
   it('should create a function that filters trips by the year for that logged in user (filterTripByYear())', () => {
     const filteredTrips = getSpecificTravelerTrips(trips, id)
     const filterTripsByChosenYear = filterTripByYear(filteredTrips, year);
@@ -242,12 +242,12 @@ describe('Calculate Cost functions:', () => {
         status: 'approved',
         suggestedActivities: []
       }
-    ])
+    ]);
   })
 
   it('this same function should return an empty [] if no year by that logged in user is found', () => {
     const filteredTrips = getSpecificTravelerTrips(trips, id)
-    const invalidYear = 2026
+    const invalidYear = '2026'
     const filterTripsByChosenYear = filterTripByYear(filteredTrips,invalidYear);
     expect(filterTripsByChosenYear).to.deep.equal([])
   })
