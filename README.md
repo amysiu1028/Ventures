@@ -12,10 +12,6 @@ That's right, _clone_ not fork. You will use this repo multiple times, but you c
 
 Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
 
-## Setup
-
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
-
 Then install the library dependencies. Run:
 
 ```bash
@@ -28,13 +24,13 @@ To verify that it is setup correctly, run `npm start` in your terminal. Go to `h
 
 ### JavaScript
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. 
 
 **Create all of your feature code files in the `src` directory.**
 
 Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). 
 
 ### HTML
 
@@ -42,7 +38,10 @@ Add the HTML you need in the `index.html` file in the `./dist` directory. There 
 
 ### Images
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+Add your image files in the `src/images` directory. Similar to CSS files:
+1. you need to `import` image files in the JavaScript entry file (`scripts.js`). 
+2. Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+
 
 ## How to View Your Code in Action
 

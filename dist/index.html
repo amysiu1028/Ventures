@@ -1,16 +1,111 @@
+<!-- CHECK CLASS NAMES have to be kebab-case! not camelCase -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Ventures Travel Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+<body aria-live="polite">
+  <h1 class="error-message hidden">Error message for server when down</h1>
+    <section class="login"> 
+      <section class="welcome"> 
+        <h1 class="add-spacing-to-headers" tabindex="0">Welcome to Venture Travel</h1>
+        <h2 class="add-spacing-to-headers" tabindex="0">Ready to start your journey</h2>
+      </section>
+      <section class="login-box">
+        <h1 class="login-header" tabindex="0">Login to Your Account</h1>
+        <form class="login-container"> 
+          <section class="login-inputs"> 
+            <label for="username" tabindex="0">Username: </label>
+            <input type="text" id="username" class="inputField" name="username" placeholder="Enter username..." tabindex="0" required>
+          </section>
+          <section class="login-inputs">
+            <label for="password" tabindex="0">Password: </label>
+            <input type="password" id="password" class="inputField" name="password" placeholder="Enter password..." tabindex="0"required>
+          </section>
+          <button type="submit" class="submit-button" aria-label="Press enter on this submit button to log in with your provided username and password" tabindex="0">Submit</button>
+          <p class="login-error-message hidden">Error Message</p>
+        </form>
+      </section>
+    </section>
+  <main> 
+    <section class="dashboard hidden"> 
+      <aside class="left-aside">
+        <h1 class="hello-username" tabindex="0">Hello Username</h1>
+        <section class="dropdown-container"> 
+          <label class="select-year-title hidden" aria-atomic="true"  tabindex="0">Total Cost for Selected Year:</label><br>
+          <label for="year-dropdown" tabindex="0">Select Year:</label>
+          <select class="year-dropdown" id="year-dropdown" tabindex="0">
+            <option aria-label="Please click down arrow to select year" disabled selected>Select Year Below</option>
+            <option value="2019" title="January 2019 - December 2019" tabindex="0">01/2019 - 12/2019</option>
+            <option value="2020" title="January 2020 - December 2020" tabindex="0">01/2020 - 12/2020</option>
+            <option value="2021" title="January 2021 - December 2021" tabindex="0">01/2021 - 12/2021</option>
+            <option value="2022" title="January 2022 - December 2022" tabindex="0">01/2022 - 12/2022</option>
+            <option value="2023" title="January 2023 - December 2023" tabindex="0">01/2023 - 12/2023</option>
+          </select>
+        </section>
+        <h3 class="total-cost-statement hidden" tabindex="0">You did not book any trips in this year</h3>
+      </aside>
+      <main class="dashboard-main">
+        <header class="dashboard-header">
 
+          <h1 tabindex="0">Welcome to Venture Travel Agency</h1>
+          <h2 tabindex="0">Your adventure starts here</h2>
+          <section class="add-new-trip"> 
+            <form>
+              <label for="startDate" class="start-date" tabindex="0">Start Date:</label>
+              <input id="startDate" type="text" tabindex="0" placeholder="YYYY/MM/DD" aria-haspopup="dialog" aria-expanded="false" aria-describedby="startDateDescription" required>
+              <span id="startDateDescription"	aria-label="Start Date Format: YYYY/MM/DD" class="sr-only">Start Format: YYYY/MM/DD</span>
+      
+              <label for="endDate" class="end-date" tabindex="0">End Date:</label>
+              <input id="endDate" type="text" tabindex="0" placeholder="YYYY/MM/DD" aria-haspopup="dialog" aria-expanded="false" aria-describedby="endDateDescription" required>
+              <span id="endDateDescription"	aria-label="End Date Format: YYYY/MM/DD" class="sr-only">End Format: YYYY/MM/DD</span>
+      
+              <label class="number-travelers" for="travel-numbers" tabindex="0">Number of Travelers:</label>
+              <input type="number" id="travel-numbers" class="travel-numbers" placeholder="Enter Number of Travelers" tabindex="0" min="1" required>
+      
+              <!-- <label for="destination-dropdown">Select Destination:</label> -->
+              <select id="destination-dropdown" class="destination-dropdown" tabindex="0" aria-describedby="destinationDescription">
+                <option>Will add them here</option>
+              </select>
+              <span id="destinationDescription" class="sr-only">Please select your destination from the dropdown list.</span>
+      
+              <button class="add-trip-button" tabindex="0" aria-label="Press enter on this add trip button to add a new trip after providing trip details" >Add Trip</button>
+              <section class="new-trip-cost hidden" tabindex="0"></section>
+            </form>
+          </section>
+        </header>
+        <section class="trips-container">
+          <section class="trips">
+            <h1 tabindex="0">Past Trips</h1>
+            <section class="past-trips">
+              <p class="no-past-trips trip-box hidden">There are currently past trips for this user.</p>
+            </section>
+          </section>
+          <section class="trips">
+            <h1 tabindex="0">Upcoming Trips</h1>
+            <section class="upcoming-trips"> 
+              <p class="no-upcoming-trips trip-box hidden">There are currently upcoming trips for this user.</p>
+            </section>
+          </section>
+          <section class="trips">
+            <h1 tabindex="0">Pending Trips</h1>
+            <section class="pending-trips"> 
+              <p class="no-pending-trips trip-box hidden">There are currently pending trips for this user.</p>
+            </section>
+          </section>
+        </section>
+      </main>
+    </section>
+  </main>
+  <script src="https://unpkg.com/js-datepicker"></script>
+  <script src="bundle.js"></script>
 </body>
 </html>

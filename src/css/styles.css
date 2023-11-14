@@ -1,3 +1,260 @@
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  background-image: url('../images/pexels-tomáš-malík-3367619.jpg');
+  /* background-size: cover; */
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 80vw;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 5%; */
+}
+
+.login-box {
+  background-color: rgba(255, 255, 255, 0.75);
+  margin: 5% 10%;
+  padding: 8%;
+  border-radius: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container {
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-inputs {
+  width: 100%;
+  margin-bottom: 20%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputField {
+  width: 100%;
+  padding: 18px;
+  box-sizing: border-box;
+  margin: 5px 30px;
+}
+
+.submit-button {
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+}
+
+.login-header {
+  margin-bottom: 15%;
+}
+
+
+.dashboard {
+  display: flex;
+  border: 2px solid #ffffff;
+  width: 90vw; /* Set the width of the dashboard */
+  height: 80vh; /* Set the height of the dashboard */
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-aside {
+  border: 2px solid #ffffff;
+  background-color: white;
+  width: 23%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.dashboard-main {
+  border: 2px solid #ffffff;
+  width: 77%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30%;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 3% 0%;
+}
+
+.add-spacing-to-headers {
+  margin-top: 10%;
+  margin-bottom: 3%;
+}
+
+h2 {
+  font-size: 30px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+#endDate, 
+#startDate,
+#travel-numbers,
+.select-year-title,
+#year-dropdown {
+  width: 175px; /* Adjust the width according to your preference */
+  padding: 6px; 
+   /* Optional: Add margin to separate fields */
+}
+
+.dropdown-container,
+.number-travelers,
+.start-date,
+.end-date,
+.destination-dropdown,
+.add-trip-button,
+#year-dropdown,
+.submit-button  {
+  margin: 2% 0%;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+}
+
+#year-dropdown,
+.destination-dropdown {
+  font-size: 17px;
+  font-weight: 100;
+}
+.trips-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  height: 60%;
+  margin-top: 50px;
+}
+
+.trips {
+  padding: 3%;
+  width: 20vw;
+  text-align: center;
+  background: white;
+  margin: 1%;
+  border-radius: 3%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.past-trips,
+.upcoming-trips,
+.pending-trips {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 12px;
+}
+
+.trip-box {
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 4.5% 0.1%;
+  color: black;
+  border-radius: 3%;
+}
+
+.trip-box h1,
+p {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.total-cost-statement {
+  font-size: 20px;
+  text-align: left;
+}
+
+.select-year-title {
+  margin-bottom: 10%;
+}
+
+.add-new-trip {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-trip-statement {
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0px;
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.image-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.hidden {
+  display: none;
 }
