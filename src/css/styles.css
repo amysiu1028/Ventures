@@ -1,13 +1,11 @@
 body {
   background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
   background-image: url('../images/pexels-tomáš-malík-3367619.jpg');
-  /* background-size: cover; */
   background-position: center; 
   background-repeat: no-repeat;
   background-size: cover;
-  
+  color: #0E1929;
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -33,11 +31,10 @@ h2 {
 .welcome {
   display: flex;
   flex-direction: column;
-  /* margin-top: 5%; */
 }
 
 .login-box {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(225, 255, 255, 0.75);
   margin: 5% 10%;
   padding: 8%;
   border-radius: 8%;
@@ -55,7 +52,7 @@ h2 {
 
 .login-inputs {
   width: 100%;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -71,22 +68,26 @@ h2 {
 
 .submit-button {
   padding: 20px;
-  border-radius: 10px;
   margin-top: 10px;
-  font-family: 'Playfair Display', serif;
   font-size: 30px;
 }
 
-.login-header {
-  margin-bottom: 15%;
+.add-trip-button,
+.submit-button  {
+  color: #F4BE74;
+  border-radius: 10px;
+  background-color: #2F486C;
 }
 
+.login-header {
+  margin-bottom: 6%;
+}
 
 .dashboard {
   display: flex;
   border: 2px solid #ffffff;
-  width: 90vw; /* Set the width of the dashboard */
-  height: 80vh; /* Set the height of the dashboard */
+  width: 90vw; 
+  height: 80vh;
 }
 
 .dashboard-main {
@@ -124,9 +125,21 @@ h2 {
   height: 30%;
 }
 
-h1 {
+h1, 
+.username, 
+.password {
   font-size: 30px;
+  font-weight: bold;
   margin: 3% 0%;
+}
+
+#username,
+#password {
+  font-size: 25px;
+  font-weight: 100;
+  padding: 5%;
+  margin-left: 5%;
+  margin-top: 5%;
 }
 
 .add-spacing-to-headers {
@@ -141,13 +154,15 @@ h2 {
 }
 
 #endDate, 
-#startDate,
+#startDate {
+  width: 150px;
+}
+
 #travel-numbers,
 .select-year-title,
 #year-dropdown {
-  width: 175px; /* Adjust the width according to your preference */
-  padding: 6px; 
-   /* Optional: Add margin to separate fields */
+  width: 250px; 
+  padding: 3px; 
 }
 
 .dropdown-container,
@@ -158,17 +173,18 @@ h2 {
 .add-trip-button,
 #year-dropdown,
 .submit-button  {
-  margin: 2% 0%;
+  margin: 1% 0%;
   font-weight: bold;
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
 }
 
 #year-dropdown,
 .destination-dropdown {
   font-size: 17px;
   font-weight: 100;
+  width: 180px;
 }
+
 .trips-container {
   display: flex;
   flex-direction: row;
@@ -199,23 +215,23 @@ h2 {
 }
 
 .trip-box {
-  border: 1px solid #000;
+  border: 1px solid #0E1929;
   padding: 10px;
   margin: 4.5% 0.1%;
-  color: black;
+  color: #0E1929;
   border-radius: 3%;
 }
 
 .trip-box h1,
 p {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 }
 
-
 .total-cost-statement {
   font-size: 20px;
-  text-align: left;
+  text-align: center;
+  margin: 3%;
 }
 
 .select-year-title {
@@ -224,7 +240,7 @@ p {
 
 .add-new-trip {
   display: flex;
-  flex-direction: row;
+  align-items: center;
 }
 
 .new-trip-statement {
@@ -255,6 +271,43 @@ p {
   height: auto;
 }
 
+#startDate,
+#endDate,
+#travel-numbers {
+  font-size: 20px;
+}
+
+.login-error-message {
+  color: darkred;
+  font-size: 20px;
+  text-align: center;
+}
+
+.destination-dropdown {
+  color:#F4BE74;
+  background-color: #0E1929;
+  font-weight: bold;
+  padding: 0.55%;
+}
+
+.trip-section-space {
+  margin-left: 0.1%;
+}
+
+.add-trip-button {
+  font-size: 17px;
+  margin-top: 2%;
+  margin-bottom: 0;
+  width: 125px;
+  padding: 3px;
+}
+
+.start-date,
+.end-date,
+.number-travelers,
+.year-dropdown {
+  font-size: 25px;
+}
 .hidden {
   display: none;
 }

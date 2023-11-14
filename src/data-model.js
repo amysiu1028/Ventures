@@ -18,7 +18,7 @@ export const handleLogin = (username, password, id) => {
    if (username === '' || password === '') {
       return 'Please provide both username and password.';
    } else if (username !== `traveler${id}` || password !== 'travel') {
-      return 'Invalid username and/or password. Please enter correct username and password';
+      return 'Invalid username and/or password. Please enter correct username and password.';
    } else if (username === `traveler${id}` && password === 'travel') {
       return true;
    }
