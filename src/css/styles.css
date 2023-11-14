@@ -308,6 +308,11 @@ p {
 .year-dropdown {
   font-size: 25px;
 }
+
+.logo {
+  width: 260px;
+  height: 250px;
+}
 .hidden {
   display: none;
 }
