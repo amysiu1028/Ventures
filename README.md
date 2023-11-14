@@ -50,13 +50,13 @@ https://user-images.githubusercontent.com/140124108/282933916-7fefcced-050b-48eb
 
 ## 🎆 Wins && 🔥 Challenges: 
 **Wins:**
-⭐ Using datepicker library to calculate the duration by the start date and end date inputs from the dates the datepicker library when user selects dates, and if the user decides to type in the dates.
-⭐ Calculating total cost for the selected year for user for all past, upcoming, pending trips. 
-⭐ Updating added trips to upcoming and pending trips. 
+- ⭐ Using datepicker library to calculate the duration by the start date and end date inputs from the dates the datepicker library when user selects dates, and if the user decides to type in the dates.
+- ⭐ Calculating total cost for the selected year for user for all past, upcoming, pending trips. 
+- ⭐ Updating added trips to upcoming and pending trips. 
 
 **Challenges:**
-❗ Choosing to use datepicker library to calculate dates versus html type="date".
-❗ Calculating total cost for new trip user wants to add.
+- ❗ Choosing to use datepicker library to calculate dates versus html type="date".
+- ❗ Calculating total cost for new trip user wants to add.
 
 ## 📝 Observations && ❓ Questions:
 **Observations:**
