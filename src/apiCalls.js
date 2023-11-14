@@ -64,22 +64,13 @@ export const fetchPosts = (newTrip) => {
         return response.json();
     })
     .then (newTrip => {
-        console.log("newTrip",newTrip)
         allTripsData.push(newTrip.newTrip);
-        console.log("all",allTripsData) //good
 
         const todaysDate = getTodaysDate();
-        console.log("todays",todaysDate) //good
         const userID = getUserID(usernameInput.value);
-        console.log("userID",userID) //good
-
         const newTripsByID = getSpecificTravelerTrips(allTripsData,userID);
-        console.log("tripsByID",newTripsByID) //this funciton isn't working...
-
         const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
-        console.log("updatedTravelerUpcomingTrips",updatedTravelerUpcomingTrips)
         const pendingTrips = travelerPendingTrips(newTripsByID);
-        console.log("pendingTrips",pendingTrips)
 
         pendingTripsBox.innerHTML = "";
         upcomingTripsBox.innerHTML = "";
@@ -87,17 +78,10 @@ export const fetchPosts = (newTrip) => {
         displayPendingTrips(pendingTrips, allDestinataionData);
         displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
         
-        console.log("updatedTravelerUpcomingTrips",updatedTravelerUpcomingTrips);
-        console.log("pendingTrips",pendingTrips);
-
         const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
         const totalCostWithFee = costWithFee(totalCostForNewTrip);
 
-        console.log("totalCostWithFee",totalCostWithFee)
-        console.log(" allDestinataionData", allDestinataionData)
-        console.log(" selectedDestinationID", selectedDestinationID)
-        displayNewTripCost(totalCostWithFee, allDestinataionData, selectedDestinationID);
-        
+        displayNewTripCost(newTrip.newTrip,totalCostWithFee, allDestinataionData, selectedDestinationID);
     })
     .catch (error => {
         console.log(error.message);

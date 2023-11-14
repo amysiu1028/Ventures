@@ -125,10 +125,13 @@ export function displaySortedDestinations(destinationsData) {
   destinationDropdown.innerHTML = optionsHTML;
 }
 
-export function displayNewTripCost(totalCostWithFee, destinationData,selectedDestinationID) {
+export function displayNewTripCost(newTrip,totalCostWithFee, destinationData, selectedDestinationID) {
+  
   newTripCost.classList.remove('hidden');
   const matchingDestinationByID = destinationData.find((destination) => destination.id === selectedDestinationID);
+  console.log("matchingDestinationByID,",matchingDestinationByID)
   if (matchingDestinationByID) {
-    return newTripCost.innerHTML += `<h4 class="new-trip-statement"><strong>The estimated cost for ${matchingDestinationByID.destination} trip:</strong> $${totalCostWithFee} </h4>`;
+    return newTripCost.innerHTML += `<h4 class="new-trip-statement"><strong>The estimated cost for ${newTrip.duration} days in ${matchingDestinationByID.destination} for ${newTrip.travelers} traveler/s is: </strong> $${totalCostWithFee} </h4>`;
   }
+
 }
