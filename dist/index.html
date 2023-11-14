@@ -48,15 +48,15 @@
         <img class="logo" src="../images/VentureLogo.png" alt="Venture Travel Logo">
         <h1 class="hello-username" tabindex="0">Hello Username</h1>
         <section class="dropdown-container"> 
-          <label class="select-year-title hidden" aria-atomic="true"  tabindex="0">Total Cost for Selected Year:</label><br>
-          <label id="year-dropdown" for="year-dropdown" tabindex="0">Select Year:</label>
+          <h1 class="select-year-title hidden" aria-atomic="true"  tabindex="0">Total Cost for Selected Year:</h1><br>
+          <label class="select-year" for="year-dropdown" tabindex="0">Select Year:</label>
           <select class="year-dropdown" id="year-dropdown" tabindex="0">
             <option aria-label="Please click down arrow to select year" disabled selected>Select Year Below</option>
-            <option value="2019" title="January 2019 - December 2019" tabindex="0">01/2019 - 12/2019</option>
-            <option value="2020" title="January 2020 - December 2020" tabindex="0">01/2020 - 12/2020</option>
-            <option value="2021" title="January 2021 - December 2021" tabindex="0">01/2021 - 12/2021</option>
-            <option value="2022" title="January 2022 - December 2022" tabindex="0">01/2022 - 12/2022</option>
-            <option value="2023" title="January 2023 - December 2023" tabindex="0">01/2023 - 12/2023</option>
+            <option value="2019" tabindex="0" title="January 2019 - December 2019">01/2019 - 12/2019</option>
+            <option value="2020" tabindex="0" title="January 2020 - December 2020">01/2020 - 12/2020</option>
+            <option value="2021" tabindex="0" title="January 2021 - December 2021">01/2021 - 12/2021</option>
+            <option value="2022" tabindex="0" title="January 2022 - December 2022">01/2022 - 12/2022</option>
+            <option value="2023" tabindex="0" title="January 2023 - December 2023">01/2023 - 12/2023</option>
           </select>
         </section>
         <h3 class="total-cost-statement hidden" tabindex="0">You did not book any trips in this year</h3>
@@ -65,7 +65,7 @@
         <header class="dashboard-header">
           <h1 tabindex="0">Welcome to Venture Travel Agency</h1>
           <h2 tabindex="0">Your adventure starts here</h2>
-          <section> 
+          <section class="add-new-trip-container"> 
             <form class="add-new-trip">
               <section>
                 <label for="startDate" class="start-date" tabindex="0">Start Date:</label>
@@ -82,9 +82,9 @@
                 <input type="number" id="travel-numbers" class="travel-numbers" placeholder="Enter Number of Travelers" tabindex="0" min="1" required>
               </section>
               <section class="trip-section-space"> 
-                <label class="number-travelers" for="destination" tabindex="0">Destination:</label>
+                <label class="destination-label" for="destination-dropdown" tabindex="0">Destination:</label>
                 <select id="destination-dropdown" class="destination-dropdown" tabindex="0" aria-describedby="destinationDescription">
-                  <option>Will add them here</option>
+                  <option>Destinations</option>
                 </select>
                 <span id="destinationDescription" class="sr-only">Please select your destination from the dropdown list.</span>
               </section>
@@ -100,7 +100,7 @@
               <p class="no-past-trips trip-box hidden">There are currently past trips for this user.</p>
             </section>
           </section>
-          <section class="trips">
+          <section class="middle-trips">
             <h1 tabindex="0">Upcoming Trips</h1>
             <section class="upcoming-trips"> 
               <p class="no-upcoming-trips trip-box hidden">There are currently upcoming trips for this user.</p>

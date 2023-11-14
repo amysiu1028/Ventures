@@ -1,7 +1,6 @@
-import { allTripsData } from "./scripts.js";
 import { travelerUpcomingTrips, costForNewTrip, costWithFee, getTodaysDate, travelerPendingTrips, getSpecificTravelerTrips, getUserID } from "./data-model.js";
 import { displayUpcomingTrips, displayNewTripCost, displayPendingTrips } from "./domUpdates.js";
-import { allDestinataionData } from "./scripts.js";
+import { allTripsData, allDestinataionData, selectedDestinationID } from "./scripts.js";
 
 //querySelectors:
 // const errorMessage = document.querySelector('.error-message');
@@ -65,19 +64,40 @@ export const fetchPosts = (newTrip) => {
         return response.json();
     })
     .then (newTrip => {
-        allTripsData.push(newTrip);
+        console.log("newTrip",newTrip)
+        allTripsData.push(newTrip.newTrip);
+        console.log("all",allTripsData) //good
+
         const todaysDate = getTodaysDate();
-        const updatedTravelerUpcomingTrips = travelerUpcomingTrips(allTripsData, todaysDate);
-        upcomingTripsBox.innerHTML = "";
-        displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
+        console.log("todays",todaysDate) //good
         const userID = getUserID(usernameInput.value);
-        const tripsByID = getSpecificTravelerTrips(allTripsData,userID)
-        const pendingTrips = travelerPendingTrips(tripsByID)
+        console.log("userID",userID) //good
+
+        const newTripsByID = getSpecificTravelerTrips(allTripsData,userID);
+        console.log("tripsByID",newTripsByID) //this funciton isn't working...
+
+        const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
+        console.log("updatedTravelerUpcomingTrips",updatedTravelerUpcomingTrips)
+        const pendingTrips = travelerPendingTrips(newTripsByID);
+        console.log("pendingTrips",pendingTrips)
+
         pendingTripsBox.innerHTML = "";
+        upcomingTripsBox.innerHTML = "";
+
         displayPendingTrips(pendingTrips, allDestinataionData);
+        displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
+        
+        console.log("updatedTravelerUpcomingTrips",updatedTravelerUpcomingTrips);
+        console.log("pendingTrips",pendingTrips);
+
         const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
         const totalCostWithFee = costWithFee(totalCostForNewTrip);
-        displayNewTripCost(totalCostWithFee);
+
+        console.log("totalCostWithFee",totalCostWithFee)
+        console.log(" allDestinataionData", allDestinataionData)
+        console.log(" selectedDestinationID", selectedDestinationID)
+        displayNewTripCost(totalCostWithFee, allDestinataionData, selectedDestinationID);
+        
     })
     .catch (error => {
         console.log(error.message);

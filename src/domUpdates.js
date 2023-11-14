@@ -15,6 +15,8 @@ const newTripCost = document.querySelector('.new-trip-cost');
 const noPastTrips = document.querySelector('.no-past-trips');
 const noUpcomingTrips = document.querySelector('.no-upcoming-trips');
 const noPendingTrips = document.querySelector('.no-pending-trips');
+const startDateInput = document.querySelector('#startDate');
+const endDateInput = document.querySelector('#endDate');
 //show login message errors
 export function displayLoginErrorMessage(message) {
   loginErrorMessage.classList.remove('hidden');
@@ -123,7 +125,10 @@ export function displaySortedDestinations(destinationsData) {
   destinationDropdown.innerHTML = optionsHTML;
 }
 
-export function displayNewTripCost(totalCostWithFee) {
+export function displayNewTripCost(totalCostWithFee, destinationData,selectedDestinationID) {
   newTripCost.classList.remove('hidden');
-  newTripCost.innerHTML += `<h4 class="new-trip-statement"><strong>The estimated cost for this trip:</strong> $${totalCostWithFee} </h4>`;
+  const matchingDestinationByID = destinationData.find((destination) => destination.id === selectedDestinationID);
+  if (matchingDestinationByID) {
+    return newTripCost.innerHTML += `<h4 class="new-trip-statement"><strong>The estimated cost for ${matchingDestinationByID.destination} trip:</strong> $${totalCostWithFee} </h4>`;
+  }
 }

@@ -5,8 +5,8 @@ import './images/turing-logo.png'
 
 //import functions?
 import { fetchAllPromises, fetchSingleTravelerPromise, fetchPosts} from './apiCalls';
-import { getUserID, handleLogin, getSpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips, calculateTotalCost, filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID, costForNewTrip } from "./data-model";
-import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName, displaySortedDestinations, displayNewTripCost } from './domUpdates';
+import { getUserID, handleLogin, getSpecificTravelerTrips, getTodaysDate, travelerPastTrips, travelerUpcomingTrips, travelerPendingTrips,filterTripByYear, getTotalCostPerYear, costWithFee, calculateDuration, getDestinationID } from "./data-model";
+import { loadDashboard, displayLoginErrorMessage, displayPastTrips, displayUpcomingTrips, displayPendingTrips, displayCostPerYear, displayUserName, displaySortedDestinations, clearInputs } from './domUpdates';
 
 //global variables:
 export let allTravelerData;
@@ -17,6 +17,7 @@ let userID;
 export let tripsByID;
 export let totalCostForNewTrip;
 let duration;
+export let selectedDestinationID;
 
 //querySelectors:
 const submitButton = document.querySelector('.submit-button');
@@ -57,6 +58,7 @@ submitButton.addEventListener("click",function(event) {
                 const todaysDate = getTodaysDate();
                 const pastTrips = travelerPastTrips(tripsByID,todaysDate);
                 const upcomingTrips = travelerUpcomingTrips(tripsByID,todaysDate);
+                console.log("upcoming",upcomingTrips)
                 const pendingTrips = travelerPendingTrips(tripsByID);
                 
                 //show single traveler information:
@@ -112,7 +114,7 @@ submitButton.addEventListener("click",function(event) {
                 
                 displaySortedDestinations(allDestinataionData);
                 destinationDropdown.addEventListener('change', function() {
-                    const selectedDestinationID = destinationDropdown.value;
+                    selectedDestinationID = parseInt(destinationDropdown.value);
                     findDesinationID = getDestinationID(allDestinataionData,selectedDestinationID)
                 })
                 

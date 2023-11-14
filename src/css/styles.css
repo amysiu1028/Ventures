@@ -133,6 +133,12 @@ h1,
   margin: 3% 0%;
 }
 
+.dashboard-header h1 {
+  color: #2F486C;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
 #username,
 #password {
   font-size: 25px;
@@ -165,19 +171,6 @@ h2 {
   padding: 3px; 
 }
 
-.dropdown-container,
-.number-travelers,
-.start-date,
-.end-date,
-.destination-dropdown,
-.add-trip-button,
-#year-dropdown,
-.submit-button  {
-  margin: 1% 0%;
-  font-weight: bold;
-  font-family: 'Playfair Display', serif;
-}
-
 #year-dropdown,
 .destination-dropdown {
   font-size: 17px;
@@ -191,18 +184,25 @@ h2 {
   justify-content: space-between;
   width: 90%;
   height: 60%;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
-.trips {
+.trips, 
+.middle-trips {
   padding: 3%;
   width: 20vw;
   text-align: center;
   background: rgba(244, 190, 116, 0.85);
-  margin: 1%;
   border-radius: 3%;
   max-height: 90vh;
   overflow-y: auto;
+  margin-top: 3%;
+}
+
+.middle-trips {
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .past-trips,
@@ -242,6 +242,16 @@ p {
 .add-new-trip {
   display: flex;
   align-items: center;
+  background-color: rgba(244, 190, 116, 0.90);
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+  padding: 2%;
+}
+
+.add-new-trip-container {
+  width: 62vw;
+  align-items: center;
+
 }
 
 .new-trip-statement {
@@ -292,21 +302,15 @@ p {
 }
 
 .trip-section-space {
-  margin-left: 0.1%;
-}
-
-.add-trip-button {
-  font-size: 17px;
-  margin-top: 2%;
-  margin-bottom: 0;
-  width: 125px;
-  padding: 3px;
+  margin-left: 0.01%;
 }
 
 .start-date,
 .end-date,
-.number-travelers,
-.year-dropdown {
+.number-travelers, 
+.destination-label,
+.year-dropdown,
+.select-year {
   font-size: 25px;
 }
 
@@ -317,6 +321,29 @@ p {
 
 .welcome-header {
   color: #2F486C;
+}
+
+.dropdown-container,
+.number-travelers,
+.destination-label,
+.start-date,
+.end-date,
+.destination-dropdown,
+.add-trip-button,
+.select-year,
+.submit-button,
+.select-year {
+  /* margin: 0.5% 0%; */
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+.add-trip-button {
+  font-size: 17px;
+  margin-top: 2%;
+  margin-bottom: 0;
+  width: 125px;
+  padding: 3px;
 }
 
 .hidden {
