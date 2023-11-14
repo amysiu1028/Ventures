@@ -1,7 +1,6 @@
-import { allTripsData } from "./scripts.js";
 import { travelerUpcomingTrips, costForNewTrip, costWithFee, getTodaysDate, travelerPendingTrips, getSpecificTravelerTrips, getUserID } from "./data-model.js";
 import { displayUpcomingTrips, displayNewTripCost, displayPendingTrips } from "./domUpdates.js";
-import { allDestinataionData } from "./scripts.js";
+import { allTripsData, allDestinataionData, selectedDestinationID } from "./scripts.js";
 
 //querySelectors:
 // const errorMessage = document.querySelector('.error-message');
@@ -65,19 +64,24 @@ export const fetchPosts = (newTrip) => {
         return response.json();
     })
     .then (newTrip => {
-        allTripsData.push(newTrip);
+        allTripsData.push(newTrip.newTrip);
+
         const todaysDate = getTodaysDate();
-        const updatedTravelerUpcomingTrips = travelerUpcomingTrips(allTripsData, todaysDate);
-        upcomingTripsBox.innerHTML = "";
-        displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
         const userID = getUserID(usernameInput.value);
-        const tripsByID = getSpecificTravelerTrips(allTripsData,userID)
-        const pendingTrips = travelerPendingTrips(tripsByID)
+        const newTripsByID = getSpecificTravelerTrips(allTripsData,userID);
+        const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
+        const pendingTrips = travelerPendingTrips(newTripsByID);
+
         pendingTripsBox.innerHTML = "";
+        upcomingTripsBox.innerHTML = "";
+
         displayPendingTrips(pendingTrips, allDestinataionData);
+        displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
+        
         const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
         const totalCostWithFee = costWithFee(totalCostForNewTrip);
-        displayNewTripCost(totalCostWithFee);
+
+        displayNewTripCost(newTrip.newTrip,totalCostWithFee, allDestinataionData, selectedDestinationID);
     })
     .catch (error => {
         console.log(error.message);

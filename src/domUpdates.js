@@ -12,17 +12,15 @@ const totalCostStatement = document.querySelector('.total-cost-statement');
 const helloUsername = document.querySelector('.hello-username');
 const destinationDropdown = document.querySelector('.destination-dropdown');
 const newTripCost = document.querySelector('.new-trip-cost');
-const noPastTrips = document.querySelector('.no-past-trips');
-const noUpcomingTrips = document.querySelector('.no-upcoming-trips');
-const noPendingTrips = document.querySelector('.no-pending-trips');
+
 //show login message errors
-export function displayLoginErrorMessage(message) {
+export const displayLoginErrorMessage = (message) => {
   loginErrorMessage.classList.remove('hidden');
   loginErrorMessage.innerText = message;
 }
 
 //load dashboard
-export function loadDashboard() {
+export const loadDashboard = () => {
   loginPage.classList.add('hidden');
   dashboardPage.classList.remove('hidden');
 }
@@ -31,75 +29,66 @@ export const displayUserName = (singleTravelData) => {
   helloUsername.innerText = `Hello ${singleTravelData.name}!`;
 };
 
-export function displayPastTrips(pastTripsData, destinationData) {
-  if (typeof pastTripsData === 'string') {
-    noPastTrips.classList.remove('hidden');
-  } else {
-
-    pastTripsBox.innerHTML += pastTripsData.map((trip) => {
-      const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
-      if (matchingDestinationByID) {
-        return `
-          <section class="trip-box">
-            <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}" />
-            <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
-            <h1 tabindex="0">Date: ${trip.date}</h1>
-            <h1 tabindex="0">Duration: ${trip.duration}</h1>
-            <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
-            <h1 tabindex="0">Trip ID: ${trip.id}</h1>
-          </section>
-        `;
-      }
-    });
-  }
+export const displayPastTrips = (pastTripsData, destinationData) => {
+  pastTripsBox.innerHTML += pastTripsData.map((trip) => {
+    const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
+    if (matchingDestinationByID) {
+      return `
+        <section class="trip-box">
+          <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}" />
+          <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
+          <h1 tabindex="0">Date: ${trip.date}</h1>
+          <h1 tabindex="0">Duration: ${trip.duration}</h1>
+          <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
+          <h1 tabindex="0">Trip ID: ${trip.id}</h1>
+        </section>
+      `;
+    }
+  });
 }
 
-export function displayUpcomingTrips(upcomingTripsData, destinationData) {
-  if (typeof upcomingTripsData === 'string') {
-    noUpcomingTrips.classList.remove('hidden');
-  } else {
-    upcomingTripsBox.innerHTML += upcomingTripsData.map((trip) => {
-      const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
-      if (matchingDestinationByID) {
-        return `
-          <section class="trip-box">
-            <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
-            <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
-            <h1 tabindex="0">Date: ${trip.date}</h1>
-            <h1 tabindex="0">Duration: ${trip.duration}</h1>
-            <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
-            <h1 tabindex="0">Trip ID: ${trip.id}</h1>
-          </section>
-        `;
-      }
-    });
-  }
+export const displayUpcomingTrips = (upcomingTripsData, destinationData) => {
+  upcomingTripsBox.innerHTML += upcomingTripsData.map((trip) => {
+    const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
+    if (matchingDestinationByID) {
+      return `
+        <section class="trip-box">
+          <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
+          <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
+          <h1 tabindex="0">Date: ${trip.date}</h1>
+          <h1 tabindex="0">Duration: ${trip.duration}</h1>
+          <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
+          <h1 tabindex="0">Trip ID: ${trip.id}</h1>
+        </section>
+      `;
+    }
+  });
 }
 
-export function displayPendingTrips(pendingTripsData, destinationData) {
-  if (typeof pendingTripsData === 'string') {
-    noPendingTrips.classList.remove('hidden');
-  } else {
-    pendingTripsBox.innerHTML += pendingTripsData.map((trip) => {
-      const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
-      if (matchingDestinationByID) {
-        return `
-          <section class="trip-box">
-            <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
-            <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
-            <h1 tabindex="0">Date: ${trip.date}</h1>
-            <h1 tabindex="0">Duration: ${trip.duration}</h1>
-            <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
-            <h1 tabindex="0">Trip ID: ${trip.id}</h1>
-          </section>
-        `;
-      }
-    });
-  }
+
+export const displayPendingTrips = (pendingTripsData, destinationData) => {
+  pendingTripsBox.innerHTML += pendingTripsData.map((trip) => {
+    const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
+    if (matchingDestinationByID) {
+      return `
+        <section class="trip-box">
+          <img tabindex="0" class="image-container" src="${matchingDestinationByID.image}" alt="${matchingDestinationByID.alt} in ${matchingDestinationByID.destination}"/>
+          <h1 tabindex="0">Destination: ${matchingDestinationByID.destination}</h1>
+          <h1 tabindex="0">Date: ${trip.date}</h1>
+          <h1 tabindex="0">Duration: ${trip.duration}</h1>
+          <h1 tabindex="0">Number of Travelers: ${trip.travelers}</h1>
+          <h1 tabindex="0">Trip ID: ${trip.id}</h1>
+        </section>
+      `;
+    }
+  });
 }
 
-export function displayCostPerYear(year, filteredTrips, costWithFee) {
-  const filteredByYear = filterTripByYear(filteredTrips, year);
+export const displayCostPerYear = (year, filteredTripData, costWithFee) => {
+  console.log("year",year)
+  console.log("fiteredTripByYear",filterTripByYear)
+  console.log("costWithFee",costWithFee)
+  const filteredByYear = filterTripByYear(filteredTripData, year);
   if (filteredByYear.length > 0) {
     totalCostStatement.classList.remove('hidden');
     totalCostStatement.innerHTML = `<h3 tabindex="0"><strong>${year} Total Cost </strong>: $${costWithFee}</h3>`;
@@ -109,7 +98,7 @@ export function displayCostPerYear(year, filteredTrips, costWithFee) {
   }
 }
 
-export function displaySortedDestinations(destinationsData) {
+export const displaySortedDestinations = (destinationsData) => {
   const sortedDestinations = destinationsData.sort((a, b) => {
     return a.destination.localeCompare(b.destination);
   });
@@ -120,7 +109,12 @@ export function displaySortedDestinations(destinationsData) {
   destinationDropdown.innerHTML = optionsHTML;
 }
 
-export function displayNewTripCost(totalCostWithFee) {
+export const displayNewTripCost = (newTrip,totalCostWithFee, destinationData, selectedDestinationID) => {
   newTripCost.classList.remove('hidden');
-  newTripCost.innerHTML += `<h4 class="new-trip-statement"><strong>The estimated cost for this trip:</strong> $${totalCostWithFee} </h4>`;
+  const matchingDestinationByID = destinationData.find((destination) => destination.id === selectedDestinationID);
+  console.log("matchingDestinationByID,",matchingDestinationByID)
+  if (matchingDestinationByID) {
+    return newTripCost.innerHTML += `<h1 class="new-trip-statement"><strong>The estimated cost for ${newTrip.duration} days in ${matchingDestinationByID.destination} for ${newTrip.travelers} traveler/s is: </strong> $${totalCostWithFee} </h1>`;
+  }
+
 }

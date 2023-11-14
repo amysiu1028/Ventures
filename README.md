@@ -1,98 +1,65 @@
-# Webpack Starter Kit
+<div align="center">
+  
+# 🗺️ Venture Travel 
+![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
 
-## Clone This Repo
+## 💾 Technologies Used
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![Mocha](https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![js-datepicker](https://img.shields.io/badge/Datepicker.js-red?style=for-the-badge&logo=npm&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## 👩‍💻 Collaborator
+[Amy Siu](https://github.com/amysiu1028) 
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+</div>
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## 💭 Abstract
+This project develops a user-friendly dashboard for travelers to log in and view their trip history. Travelers can use a dropdown bar to view their expenses on trips within a selected year, factoring in a 10% travel agent's fee. 
 
-Then install the library dependencies. Run:
+Additionally, they have the option to add new trips by providing details such as start date, end date, number of travelers, and destination. Clicking the 'Add Trip' button reveals the estimated cost for the new trip, including the 10% travel agent fee. Furthermore, clicking that button updates the upcoming and pending trips for the traveler. Travelers can add more trips to view the estimated cost for each.
 
-```bash
-npm install
-```
+This platform ensures accessibility for travelers, allowing them to navigate through the application using tabs. Additionally, the platform is screen reader-friendly, ensuring that users with visual impairments can effectively engage with the content and functionality of the application.
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+## 💻 Installation & Backend Server Setup Instructions:
+1. Clone [this repository](https://github.com/amysiu1028/Ventures) to your local machine.
+2. You will also need to clone down this [local server](https://github.com/turingschool-examples/travel-tracker-api) run it in a separate tab in your terminal each time you run your client.
+2. In your terminal navigate to and open the project directory Ventures.
+3. Then in your terminal navigate to travel-tracker-api, install and then start your local server with. Run `npm install` and` npm start`
+4. Go back into the Ventures project directory file run `npm install` and` npm start`.
+5. Click into `http://localhost:8080/`to view your to view the application on your local computer.
 
-## Where to Add Your Code
+## 📝  Context
+This is a six-day solo project focused on developing an accessible travel agency application. During this time, I collaborated with software developers by managing pull requests and editing applications to enhance both readability and accessibility.
 
-### JavaScript
+## 🎥 Preview 
+https://user-images.githubusercontent.com/140124108/282933916-7fefcced-050b-48eb-8c7a-fd81572d8178.mov 
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. 
+## 🧠 Learning Goals:
+- Use object and array prototype methods to perform data manipulation.
+- Create a clear and accessible user interface.
+- Make network requests to retrieve data and add data.
+- Implement a robust testing suite using TDD.
+- Write DRY, reusable code that follows SRP (Single Responsibility Principle).
 
-**Create all of your feature code files in the `src` directory.**
+## 🎆 Wins && 🔥 Challenges: 
+**Wins:**
+⭐ Using datepicker library to calculate the duration by the start date and end date inputs from the dates the datepicker library when user selects dates, and if the user decides to type in the dates.
+⭐ Calculating total cost for the selected year for user for all past, upcoming, pending trips. 
+⭐ Updating added trips to upcoming and pending trips. 
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+**Challenges:**
+❗ Choosing to use datepicker library to calculate dates versus html type="date".
+❗ Calculating total cost for new trip user wants to add.
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). 
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files:
-1. you need to `import` image files in the JavaScript entry file (`scripts.js`). 
-2. Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+## 📝 Observations && ❓ Questions:
+**Observations:**
+- I took it upon myself to figure out a lot of new methods on my own and apply them in this project. One thing I would like to learn more is how my approach is for other software developers. Is it easy to read? What areas should I improve on?
+**Questions:**
+- One thing I noticed was I wasn't able to add images to my images folder within my src directory because the image didn't display with the path I provided in my html unless I added the images to a new images folder in the same directory as the html file. I'm wondering why is that? And how would I be able to add future images with just adding it into the images folder in the src directory?
