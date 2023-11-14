@@ -109,8 +109,9 @@ submitButton.addEventListener("click",function(event) {
                     const filterTripsByChosenYear = filterTripByYear(tripsByID, selectedYear);
                     console.log("filterTripsByChosenYear",filterTripsByChosenYear);
                     const totalCost = getTotalCostPerYear(filterTripsByChosenYear,allDestinataionData);
+                    console.log("totalCost",totalCost)
                     const addFeeCost = costWithFee(totalCost);
-                    displayCostPerYear(selectedYear,tripsByID,totalCost, addFeeCost);
+                    displayCostPerYear(selectedYear,tripsByID,addFeeCost);
                 });
 
                 let startDateValue;

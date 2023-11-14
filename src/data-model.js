@@ -34,9 +34,6 @@ export const getTodaysDate = () => {
 };
 
 export const getSpecificTravelerTrips = (trips, id) => {
-   if (typeof id === 'string') {
-      return `Please provide a valid username.`
-   }
    const filterTripByID = trips.filter((traveler) => parseInt(traveler.userID) === parseInt(id))
    return filterTripByID;
 };
@@ -45,9 +42,6 @@ export const travelerPastTrips = (filteredTrips, date) => {
    const pastTrips = filteredTrips.filter((trip) => {
       return new Date(trip.date) < new Date(date);
    });
-   if (pastTrips.length === 0) {
-      return `This user has no past trips`
-   }
    return pastTrips;
 };
 
@@ -55,33 +49,22 @@ export const travelerUpcomingTrips = (filteredTrips, date) => {
    const upcomingTrips = filteredTrips.filter((trip) => {
       return new Date(trip.date) >= new Date(date);;
    });
-   if (upcomingTrips.length === 0) {
-      return `This user has no upcoming trips`
-   }
    return upcomingTrips;
 };
 
 export const travelerPendingTrips = (filteredTrips) => {
    const pendingTrips = filteredTrips.filter((trip) => trip.status === 'pending');
-   if (pendingTrips.length === 0) {
-      return `This user has no pending trips`
-   }
    return pendingTrips;
 };
 
 export const filterTripByYear = (filteredTrips, year) => {
-   const filterTripsByChosenYear = filteredTrips.filter((trip) =>  parseInt(new Date(trip.date).getFullYear().toString()) === year);
-   if (filterTripsByChosenYear.length === 0) {
-      return `This user has no trips in ${year}`
-   }
+   const filterTripsByChosenYear = filteredTrips.filter((trip) => new Date(trip.date).getFullYear().toString() === year);
    return filterTripsByChosenYear;
 };
 
-export const getTotalCostPerYear = (filterTripsByChosenYear,   destinationData) => {
-   if (typeof filterTripsByChosenYear === 'string') {
-      return `You did not book any trips in this year through Venture Travel`
-   }
-
+export const getTotalCostPerYear = (filterTripsByChosenYear, destinationData) => {
+   console.log("filterTripsByChosenYear",filterTripsByChosenYear)
+   console.log("destinationData",destinationData)
    let costObject = {
       flightCostPerTrip: [],
       totalLodgingCost: []
@@ -127,7 +110,6 @@ export function calculateDuration(startDateValue, endDateValue, startDateInput, 
       if (startDate.toDateString() === endDate.toDateString()) {
          return 1;
       }
-
       const duration = Math.abs(endDate - startDate);
       const days = Math.ceil(duration / (1000 * 60 * 60 * 24));
       return days;

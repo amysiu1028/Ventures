@@ -98,7 +98,7 @@ export function displayPendingTrips(pendingTripsData, destinationData) {
   }
 }
 
-export function displayCostPerYear(year, id, cost, costWithFee) {
+export function displayCostPerYear(year, id, costWithFee) {
   const filteredByYear = filterTripByYear(id, year);
   if (filteredByYear.length > 0) {
     totalCostStatement.classList.remove('hidden');
