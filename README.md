@@ -39,7 +39,7 @@ This platform ensures accessibility for travelers, allowing them to navigate thr
 This is a six-day solo project focused on developing an accessible travel agency application. During this time, I collaborated with software developers by managing pull requests and editing applications to enhance both readability and accessibility.
 
 ## 🎥 Preview 
-
+https://user-images.githubusercontent.com/140124108/282933916-7fefcced-050b-48eb-8c7a-fd81572d8178.mov 
 
 ## 🧠 Learning Goals:
 - Use object and array prototype methods to perform data manipulation.
