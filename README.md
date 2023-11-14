@@ -50,11 +50,16 @@ This is a six-day solo project focused on developing an accessible travel agency
 
 ## 🎆 Wins && 🔥 Challenges: 
 **Wins:**
-⭐ 
+⭐ Using datepicker library to calculate the duration by the start date and end date inputs from the dates the datepicker library when user selects dates, and if the user decides to type in the dates.
+⭐ Calculating total cost for the selected year for user for all past, upcoming, pending trips. 
+⭐ Updating added trips to upcoming and pending trips. 
+
 **Challenges:**
-❗ 
+❗ Choosing to use datepicker library to calculate dates versus html type="date".
+❗ Calculating total cost for new trip user wants to add.
 
 ## 📝 Observations && ❓ Questions:
 **Observations:**
-
+- I took it upon myself to figure out a lot of new methods on my own and apply them in this project. One thing I would like to learn more is how my approach is for other software developers. Is it easy to read? What areas should I improve on?
 **Questions:**
+- One thing I noticed was I wasn't able to add images to my images folder within my src directory because the image didn't display with the path I provided in my html unless I added the images to a new images folder in the same directory as the html file. I'm wondering why is that? And how would I be able to add future images with just adding it into the images folder in the src directory?

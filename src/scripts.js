@@ -122,6 +122,13 @@ submitButton.addEventListener("click",function(event) {
                 addNewTripButton.addEventListener('click', function(event) {
                     event.preventDefault();
                     const travelers = parseInt(travelNumbersInput.value);
+                    const currentDate = new Date();
+                    console.log("new Date(startDateInput.value) ",new Date(startDateInput.value))
+                    console.log("currentDate,",currentDate)
+                    if (new Date(startDateInput.value) < currentDate) {
+                        alert('Trip date must be greater than current date.');
+                        return;
+                    }
                     duration = calculateDuration(startDateValue, endDateValue, startDateInput.value, endDateInput.value);
                     const nextID = allTripsData.length + 1; 
                     

@@ -135,7 +135,7 @@ h1,
 
 .dashboard-header h1 {
   color: #2F486C;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 2%;
 }
 
@@ -155,8 +155,8 @@ h1,
 
 h2 {
   font-size: 30px;
-  margin-top: 1%;
-  margin-bottom: 2%;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
 }
 
 #endDate, 
@@ -171,11 +171,19 @@ h2 {
   padding: 3px; 
 }
 
+#travel-numbers {
+  width: 248px; 
+}
+
 #year-dropdown,
 .destination-dropdown {
   font-size: 17px;
   font-weight: 100;
   width: 180px;
+}
+
+.destination-dropdown {
+  width: 200px;
 }
 
 .trips-container {
