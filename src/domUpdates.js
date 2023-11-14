@@ -17,13 +17,13 @@ const newTripCost = document.querySelector('.new-trip-cost');
 export const displayLoginErrorMessage = (message) => {
   loginErrorMessage.classList.remove('hidden');
   loginErrorMessage.innerText = message;
-}
+};
 
 //load dashboard
 export const loadDashboard = () => {
   loginPage.classList.add('hidden');
   dashboardPage.classList.remove('hidden');
-}
+};
 
 export const displayUserName = (singleTravelData) => {
   helloUsername.innerText = `Hello ${singleTravelData.name}!`;
@@ -43,9 +43,9 @@ export const displayPastTrips = (pastTripsData, destinationData) => {
           <h1 tabindex="0">Trip ID: ${trip.id}</h1>
         </section>
       `;
-    }
+    };
   });
-}
+};
 
 export const displayUpcomingTrips = (upcomingTripsData, destinationData) => {
   upcomingTripsBox.innerHTML += upcomingTripsData.map((trip) => {
@@ -61,9 +61,9 @@ export const displayUpcomingTrips = (upcomingTripsData, destinationData) => {
           <h1 tabindex="0">Trip ID: ${trip.id}</h1>
         </section>
       `;
-    }
+    };
   });
-}
+};
 
 
 export const displayPendingTrips = (pendingTripsData, destinationData) => {
@@ -80,9 +80,9 @@ export const displayPendingTrips = (pendingTripsData, destinationData) => {
           <h1 tabindex="0">Trip ID: ${trip.id}</h1>
         </section>
       `;
-    }
+    };
   });
-}
+};
 
 export const displayCostPerYear = (year, filteredTripData, costWithFee) => {
   console.log("year",year)
@@ -95,8 +95,8 @@ export const displayCostPerYear = (year, filteredTripData, costWithFee) => {
   } else {
     totalCostStatement.classList.remove('hidden');
     totalCostStatement.innerText = `You did not book any trips in this ${year} through Venture Travel`;
-  }
-}
+  };
+};
 
 export const displaySortedDestinations = (destinationsData) => {
   const sortedDestinations = destinationsData.sort((a, b) => {
@@ -107,7 +107,7 @@ export const displaySortedDestinations = (destinationsData) => {
     optionsHTML += `<option value="${destination.id}" tabindex="0">${destination.destination}</option>`;
   });
   destinationDropdown.innerHTML = optionsHTML;
-}
+};
 
 export const displayNewTripCost = (newTrip,totalCostWithFee, destinationData, selectedDestinationID) => {
   newTripCost.classList.remove('hidden');
@@ -115,6 +115,5 @@ export const displayNewTripCost = (newTrip,totalCostWithFee, destinationData, se
   console.log("matchingDestinationByID,",matchingDestinationByID)
   if (matchingDestinationByID) {
     return newTripCost.innerHTML += `<h1 class="new-trip-statement"><strong>The estimated cost for ${newTrip.duration} days in ${matchingDestinationByID.destination} for ${newTrip.travelers} traveler/s is: </strong> $${totalCostWithFee} </h1>`;
-  }
-
-}
+  };
+};

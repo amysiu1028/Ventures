@@ -15,6 +15,15 @@ body {
   align-items: center;
 }
 
+.login-container,
+.login-box,
+.left-aside,
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login {
   display: flex;
   flex-direction: row-reverse;
@@ -38,16 +47,11 @@ h2 {
   margin: 1% 10%;
   padding: 3% 8%;
   border-radius: 8%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
 }
 
 .login-container {
   width: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .login-inputs {
@@ -99,9 +103,6 @@ h2 {
   background-color: rgba(244, 190, 116, 0.95);
   width: 23%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   text-align: center;
 }
@@ -118,9 +119,6 @@ h2 {
 }
 
 .dashboard-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 30%;
 }
  
