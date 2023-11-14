@@ -12,16 +12,15 @@ const totalCostStatement = document.querySelector('.total-cost-statement');
 const helloUsername = document.querySelector('.hello-username');
 const destinationDropdown = document.querySelector('.destination-dropdown');
 const newTripCost = document.querySelector('.new-trip-cost');
-const startDateInput = document.querySelector('#startDate');
-const endDateInput = document.querySelector('#endDate');
+
 //show login message errors
-export function displayLoginErrorMessage(message) {
+export const displayLoginErrorMessage = (message) => {
   loginErrorMessage.classList.remove('hidden');
   loginErrorMessage.innerText = message;
 }
 
 //load dashboard
-export function loadDashboard() {
+export const loadDashboard = () => {
   loginPage.classList.add('hidden');
   dashboardPage.classList.remove('hidden');
 }
@@ -30,7 +29,7 @@ export const displayUserName = (singleTravelData) => {
   helloUsername.innerText = `Hello ${singleTravelData.name}!`;
 };
 
-export function displayPastTrips(pastTripsData, destinationData) {
+export const displayPastTrips = (pastTripsData, destinationData) => {
   pastTripsBox.innerHTML += pastTripsData.map((trip) => {
     const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
     if (matchingDestinationByID) {
@@ -48,7 +47,7 @@ export function displayPastTrips(pastTripsData, destinationData) {
   });
 }
 
-export function displayUpcomingTrips(upcomingTripsData, destinationData) {
+export const displayUpcomingTrips = (upcomingTripsData, destinationData) => {
   upcomingTripsBox.innerHTML += upcomingTripsData.map((trip) => {
     const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
     if (matchingDestinationByID) {
@@ -67,7 +66,7 @@ export function displayUpcomingTrips(upcomingTripsData, destinationData) {
 }
 
 
-export function displayPendingTrips(pendingTripsData, destinationData) {
+export const displayPendingTrips = (pendingTripsData, destinationData) => {
   pendingTripsBox.innerHTML += pendingTripsData.map((trip) => {
     const matchingDestinationByID = destinationData.find((destination) => destination.id === trip.destinationID);
     if (matchingDestinationByID) {
@@ -85,7 +84,7 @@ export function displayPendingTrips(pendingTripsData, destinationData) {
   });
 }
 
-export function displayCostPerYear(year, filteredTripData, costWithFee) {
+export const displayCostPerYear = (year, filteredTripData, costWithFee) => {
   console.log("year",year)
   console.log("fiteredTripByYear",filterTripByYear)
   console.log("costWithFee",costWithFee)
@@ -99,7 +98,7 @@ export function displayCostPerYear(year, filteredTripData, costWithFee) {
   }
 }
 
-export function displaySortedDestinations(destinationsData) {
+export const displaySortedDestinations = (destinationsData) => {
   const sortedDestinations = destinationsData.sort((a, b) => {
     return a.destination.localeCompare(b.destination);
   });
@@ -110,8 +109,7 @@ export function displaySortedDestinations(destinationsData) {
   destinationDropdown.innerHTML = optionsHTML;
 }
 
-export function displayNewTripCost(newTrip,totalCostWithFee, destinationData, selectedDestinationID) {
-  
+export const displayNewTripCost = (newTrip,totalCostWithFee, destinationData, selectedDestinationID) => {
   newTripCost.classList.remove('hidden');
   const matchingDestinationByID = destinationData.find((destination) => destination.id === selectedDestinationID);
   console.log("matchingDestinationByID,",matchingDestinationByID)
