@@ -64,24 +64,31 @@ export const fetchPosts = (newTrip) => {
         return response.json();
     })
     .then (newTrip => {
-        allTripsData.push(newTrip.newTrip);
-
-        const todaysDate = getTodaysDate();
-        const userID = getUserID(usernameInput.value);
-        const newTripsByID = getSpecificTravelerTrips(allTripsData,userID);
-        const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
-        const pendingTrips = travelerPendingTrips(newTripsByID);
-
-        pendingTripsBox.innerHTML = "";
-        upcomingTripsBox.innerHTML = "";
-
-        displayPendingTrips(pendingTrips, allDestinataionData);
-        displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
-        
-        const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
-        const totalCostWithFee = costWithFee(totalCostForNewTrip);
-
-        displayNewTripCost(newTrip.newTrip,totalCostWithFee, allDestinataionData, selectedDestinationID);
+        fetch('http://localhost:3001/api/v1/trips')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error (`${response.status}: Failed to fetch data`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const todaysDate = getTodaysDate();
+            const userID = getUserID(usernameInput.value);
+            const newTripsByID = getSpecificTravelerTrips(data.trips,userID);
+            const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
+            const pendingTrips = travelerPendingTrips(newTripsByID);
+    
+            pendingTripsBox.innerHTML = "";
+            upcomingTripsBox.innerHTML = "";
+    
+            displayPendingTrips(pendingTrips, allDestinataionData);
+            displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
+            
+            const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
+            const totalCostWithFee = costWithFee(totalCostForNewTrip);
+    
+            displayNewTripCost(newTrip.newTrip,totalCostWithFee, allDestinataionData, selectedDestinationID);
+        })
     })
     .catch (error => {
         console.log(error.message);
