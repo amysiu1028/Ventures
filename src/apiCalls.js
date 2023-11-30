@@ -64,6 +64,11 @@ export const fetchPosts = (newTrip) => {
         return response.json();
     })
     .then (newTrip => {
+        //1.prevent that, use mock data, set up file and copy first 10... or 2.update local data (issue with that: mostly getting, no limits?)
+        //get it to browser, have to do another fetch
+
+        //external server - keep getting data, instead of storing it in local server/data, we'll learn about state. That replaces local..
+        //state = 
         fetch('http://localhost:3001/api/v1/trips')
         .then((response) => {
             if (!response.ok) {
