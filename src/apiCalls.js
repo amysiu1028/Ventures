@@ -64,24 +64,36 @@ export const fetchPosts = (newTrip) => {
         return response.json();
     })
     .then (newTrip => {
-        allTripsData.push(newTrip.newTrip);
+        //1.prevent that, use mock data, set up file and copy first 10... or 2.update local data (issue with that: mostly getting, no limits?)
+        //get it to browser, have to do another fetch
 
-        const todaysDate = getTodaysDate();
-        const userID = getUserID(usernameInput.value);
-        const newTripsByID = getSpecificTravelerTrips(allTripsData,userID);
-        const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
-        const pendingTrips = travelerPendingTrips(newTripsByID);
-
-        pendingTripsBox.innerHTML = "";
-        upcomingTripsBox.innerHTML = "";
-
-        displayPendingTrips(pendingTrips, allDestinataionData);
-        displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
-        
-        const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
-        const totalCostWithFee = costWithFee(totalCostForNewTrip);
-
-        displayNewTripCost(newTrip.newTrip,totalCostWithFee, allDestinataionData, selectedDestinationID);
+        //external server - keep getting data, instead of storing it in local server/data, we'll learn about state. That replaces local..
+        //state = 
+        fetch('http://localhost:3001/api/v1/trips')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error (`${response.status}: Failed to fetch data`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const todaysDate = getTodaysDate();
+            const userID = getUserID(usernameInput.value);
+            const newTripsByID = getSpecificTravelerTrips(data.trips,userID);
+            const updatedTravelerUpcomingTrips = travelerUpcomingTrips(newTripsByID, todaysDate);
+            const pendingTrips = travelerPendingTrips(newTripsByID);
+    
+            pendingTripsBox.innerHTML = "";
+            upcomingTripsBox.innerHTML = "";
+    
+            displayPendingTrips(pendingTrips, allDestinataionData);
+            displayUpcomingTrips(updatedTravelerUpcomingTrips, allDestinataionData);
+            
+            const totalCostForNewTrip = costForNewTrip(newTrip.newTrip, allDestinataionData);
+            const totalCostWithFee = costWithFee(totalCostForNewTrip);
+    
+            displayNewTripCost(newTrip.newTrip,totalCostWithFee, allDestinataionData, selectedDestinationID);
+        })
     })
     .catch (error => {
         console.log(error.message);

@@ -1,4 +1,5 @@
 {
+  "homepage": "https://amysiu1028.github.io/Venures",
   "name": "webpack-starter-kit",
   "version": "2.0.0",
   "description": "Project starter kit using webpack, mocha, chai, and SCSS/SASS enabled",
@@ -14,6 +15,7 @@
     "css-loader": "^5.2.6",
     "eslint": "^7.27.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.1",
     "mocha": "^8.4.0",
     "mochapack": "^2.1.2",
     "sass": "^1.34.0",
@@ -24,6 +26,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack serve",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",

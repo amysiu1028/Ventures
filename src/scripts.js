@@ -1,4 +1,5 @@
 import './css/styles.css';
+import './images/VentureLogo.png';
 
 //import functions?
 import { fetchAllPromises, fetchSingleTravelerPromise, fetchPosts} from './apiCalls';
